@@ -1,5 +1,6 @@
 package ro.peViitor.pages;
 
+import com.sun.source.tree.BreakTree;
 import org.openqa.selenium.By;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
@@ -28,20 +29,12 @@ public class Landing {
         return driver.findElement(By.xpath("/html/body/div/section/section/div/section/a[2]"));
     }
 
-    public WebElement briefcase() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/div/section/a[2]/img"));
-    }
-
     public WebElement instagram() {
         return driver.findElement(By.xpath("/html/body/div/section/section/section/footer/section[1]/section[1]/a[2]/img"));
     }
 
-    public WebElement cauta() {
+    public WebElement search_button() {
         return driver.findElement(By.xpath("/html/body/div/section/section/div/main/section[2]/button"));
-    }
-
-    public String joinWidth() {
-        return alatura_te().getCssValue("width");
     }
 
     public String joinFontStyle() {
@@ -54,10 +47,6 @@ public class Landing {
 
     public String joinFontWeight() {
         return alatura_te().getCssValue("font-weight");
-    }
-
-    public String joinFont() {
-        return alatura_te().getCssValue("font-family");
     }
 
     public String joinLetter() {
@@ -76,40 +65,45 @@ public class Landing {
         return alatura_te().getText();
     }
 
-    public String joinFontHeight() {
-        return alatura_te().getCssValue("line-height");
-    }
-
-    public String briefcaseWidth() {
-        return briefcase().getCssValue("width");
-    }
-
-    public String briefcaseHeight() {
-        return briefcase().getCssValue("height");
-    }
-
     public void instagramLogo() {
         instagram().click();
     }
 
-    public String instagramLogoWidth() {
-        return instagram().getCssValue("width");
+    public String searchBColor() {
+        return search_button().getCssValue("background-color");
     }
 
-    public String instagramLogoHeight() {
-        return instagram().getCssValue("height");
+    public String searchHeight(){
+        return search_button().getCssValue("height");
     }
 
-    public String cautaColor() {
-        return cauta().getCssValue("background-color");
+    public String searchTopMargin(){
+        return search_button().getCssValue("margin-top");
     }
 
-    public String cautaWidth() {
-        return cauta().getCssValue("width");
+    public String searchCenter(){
+        return search_button().getCssValue("text-align");
     }
 
-    public String cautaHeight() {
-        return cauta().getCssValue("height");
+    public String search_borderRadius(){
+        return search_button().getCssValue("border-radius");
+    }
+
+    public boolean isSearchvisible(){
+        return search_button().isDisplayed();
+    }
+
+    public String searchfontStyle(){
+        return search_button().getCssValue("font-style");
+    }
+
+    public String searchColor(){
+        return search_button().getCssValue("color");
+
+    }
+
+    public void  searchTap(){
+        search_button().click();
     }
 }
 

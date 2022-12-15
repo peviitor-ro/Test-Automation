@@ -11,11 +11,14 @@ import ro.peViitor.pages.Landing;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 
 public class LandingPageTest extends Landing {
 
+    public final String SERP = "https://beta.peviitor.ro/rezultate?page=1";
     public final String HOMEPAGE = "https://beta.peviitor.ro/";
     public final String VOLUNTARI = "https://www.oportunitatisicariere.ro/voluntari";
     public final String INSTAGRAM = "";
@@ -40,12 +43,6 @@ public class LandingPageTest extends Landing {
         assertEquals(driver.getTitle(), "peviitor | motor de căutare locuri de muncă", "Verify reaching Homepage TC734");
     }
 
-    @Story("Alătură-te button width TC242 ")
-    @Test
-    public void join_width() {
-        assertEquals(joinWidth(), "73px");
-    }
-
     @Story("Alătură-te button font style TC283")
     @Test
     public void join_FontStyle() {
@@ -62,12 +59,6 @@ public class LandingPageTest extends Landing {
     @Test
     public void join_font_weight() {
         assertEquals(joinFontWeight(), "400");
-    }
-
-    @Story("\"Alătură-te\" button font TC177 ")
-    @Test
-    public void join_font() {
-        assertEquals(joinFont(), "SF Pro");
     }
 
     @Story("\" Alătură-te\" button letter spacing TC285")
@@ -103,24 +94,6 @@ public class LandingPageTest extends Landing {
         assertEquals(joinCharacters(), "Alătură-te");
     }
 
-    @Story("\"Alătură-te\"  button height TC241")
-    @Test
-    public void join_font_height() {
-        assertEquals(joinFontHeight(), "19px");
-    }
-
-    @Story("Briefcase icon width TC179")
-    @Test
-    public void briefcase_width() {
-        assertEquals(briefcaseWidth(), "16.67px");
-    }
-
-    @Story("Briefcase icon height TC181")
-    @Test
-    public void briefcase_height() {
-        assertEquals(briefcaseHeight(), "15px");
-    }
-
     @Ignore
     @Story("Tapping on \"Instagram\" button TC182 ")
     @Test
@@ -137,35 +110,61 @@ public class LandingPageTest extends Landing {
         driver.switchTo().window(browserTabs.get(0));
     }
 
-    @Story("Instagram logo width TC294")
-    @Test
-    public void instagram_width() {
-        assertEquals(instagramLogoWidth(), "16.67px");
-    }
-
-    @Story("Instagram logo height TC295")
-    @Test
-    public void instagram_height() {
-        assertEquals(instagramLogoHeight(), "16.67px");
-    }
-
     @Story("Cauta search button hex code TC262")
     @Test
-    public void cauta_Color() {
-        assertEquals(cautaColor(), "rgba(224, 141, 33, 1)");
+    public void search_BColor() {
+        assertEquals(searchBColor(), "rgba(224, 141, 33, 1)");
     }
 
-    @Story("Cauta search button width TC263")
+    @Story("Height for the 'Caută' text is 24px. TC271")
     @Test
-    public void cauta_Width() {
-        assertEquals(cautaWidth(), "335px");
+    public void search_height() {
+        assertEquals(searchHeight(), "24px");
     }
 
-    @Story("Cauta search buton height TC264")
+    @Story("The distance between the second search and the button for 'cauta' is 30px. TC 265")
     @Test
-    public void cauta_Height() {
-        assertEquals(cautaHeight(), "48px");
+    public void search_Margin(){
+        assertEquals(searchTopMargin(),"30px");
     }
 
+    @Story("The search button is aligned in the center. ")
+    @Test
+    public void search_Center(){
+        assertEquals(searchCenter(),"center");
+    }
 
+    @Story("Border radius for the search button is of 8px.")
+    @Test
+    public void search_border_Radius(){
+        assertEquals(search_borderRadius(),"8px");
+    }
+
+    @Story("The text 'Caută' is present in the search button.")
+    @Test
+    public void search_visible(){
+        assertTrue(isSearchvisible());
+    }
+
+    @Story("The font style for the text 'caută', in the search button, is 'normal'.")
+    @Test
+    public void search_fontStyle(){
+        assertEquals(searchfontStyle(), "normal");
+    }
+
+    @Story("The hex code for 'caută' is #FFFFFF.")
+    @Test
+    public void search_text_color(){
+        assertEquals(searchColor(),"rgba(255, 255, 255, 1)");
+    }
+
+    @Story("When you click on the search button it redirects you to the SERP page.")
+    @Test
+    public void search_tap() throws InterruptedException {
+        searchTap();
+        sleep(500);
+        assertEquals(driver.getCurrentUrl(), SERP);
+        driver.get(HOMEPAGE);
+
+    }
 }
