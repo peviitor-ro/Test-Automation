@@ -6,6 +6,7 @@ import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.HashMap;
 
@@ -15,13 +16,10 @@ public class Landing {
 
     public WebDriver openBrowser() {
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-        driver = new ChromeDriver();
-        MutableCapabilities capabilities = new MutableCapabilities();
-        HashMap<String, Object> browserstackOptions = new HashMap<>();
-        browserstackOptions.put("osVersion", "16.1.2");
-        browserstackOptions.put("deviceName", "iPhone 13 Pro");
-        browserstackOptions.put("realMobile", "true");
-        capabilities.setCapability("bstack:options", browserstackOptions);
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");
+        driver = new ChromeDriver(options);
+
         return driver;
     }
 
@@ -89,11 +87,11 @@ public class Landing {
         return search_button().getCssValue("border-radius");
     }
 
-    public boolean isSearchvisible(){
+    public boolean isSearchVisible(){
         return search_button().isDisplayed();
     }
 
-    public String searchfontStyle(){
+    public String searchFontStyle(){
         return search_button().getCssValue("font-style");
     }
 

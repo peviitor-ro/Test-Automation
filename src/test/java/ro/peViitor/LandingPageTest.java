@@ -27,7 +27,6 @@ public class LandingPageTest extends Landing {
     @BeforeClass
     public void startUp() {
         driver = openBrowser();
-        driver.manage().window().maximize();
         driver.get(HOMEPAGE);
     }
 
@@ -143,13 +142,13 @@ public class LandingPageTest extends Landing {
     @Story("The text 'Caută' is present in the search button.")
     @Test
     public void search_visible(){
-        assertTrue(isSearchvisible());
+        assertTrue(isSearchVisible());
     }
 
     @Story("The font style for the text 'caută', in the search button, is 'normal'.")
     @Test
     public void search_fontStyle(){
-        assertEquals(searchfontStyle(), "normal");
+        assertEquals(searchFontStyle(), "normal");
     }
 
     @Story("The hex code for 'caută' is #FFFFFF.")
