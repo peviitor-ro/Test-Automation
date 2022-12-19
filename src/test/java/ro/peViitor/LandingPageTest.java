@@ -18,7 +18,7 @@ import static org.testng.Assert.assertTrue;
 
 public class LandingPageTest extends Landing {
 
-    public final String SERP = "https://beta.peviitor.ro/rezultate?page=1";
+    public final String SERP = "https://beta.peviitor.ro/rezultate?country=Rom%C3%A2nia&page=1";
     public final String HOMEPAGE = "https://beta.peviitor.ro/";
     public final String VOLUNTARI = "https://www.oportunitatisicariere.ro/voluntari";
     public final String INSTAGRAM = "";
@@ -161,7 +161,7 @@ public class LandingPageTest extends Landing {
     @Test
     public void search_tap() throws InterruptedException {
         searchTap();
-        sleep(500);
+        sleep(1500);
         assertEquals(driver.getCurrentUrl(), SERP);
         driver.get(HOMEPAGE);
 
