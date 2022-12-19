@@ -36,6 +36,7 @@
                         <artifactId>aspectjweaver</artifactId>
                         <version>1.9.9.1</version>
                     </dependency>
+
                 </dependencies>
             </plugin>
             <plugin>
@@ -65,6 +66,13 @@
             <artifactId>selenium-chrome-driver</artifactId>
             <version>4.5.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.4.3</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>

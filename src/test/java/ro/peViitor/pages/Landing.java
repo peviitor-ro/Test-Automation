@@ -1,6 +1,7 @@
 package ro.peViitor.pages;
 
 import com.sun.source.tree.BreakTree;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ public class Landing {
     public WebDriver driver;
 
     public WebDriver openBrowser() {
+        WebDriverManager.chromedriver().setup();
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
