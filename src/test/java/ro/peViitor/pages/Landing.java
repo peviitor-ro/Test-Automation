@@ -1,15 +1,12 @@
 package ro.peViitor.pages;
 
-import com.sun.source.tree.BreakTree;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.util.HashMap;
 
 public class Landing {
 
@@ -24,6 +21,8 @@ public class Landing {
         return driver;
     }
 
+
+
     public WebElement alatura_te() {
         return driver.findElement(By.xpath("/html/body/div/section/section/div/section/a[2]"));
     }
@@ -34,6 +33,14 @@ public class Landing {
 
     public WebElement search_button() {
         return driver.findElement(By.xpath("/html/body/div/section/section/div/main/section[2]/button"));
+    }
+
+    public WebElement job() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/div/main/section[1]/h1"));
+    }
+
+    public WebElement avem(){
+        return driver.findElement(By.className("description"));
     }
 
     public String joinFontStyle() {
@@ -72,38 +79,76 @@ public class Landing {
         return search_button().getCssValue("background-color");
     }
 
-    public String searchHeight(){
+    public String searchHeight() {
         return search_button().getCssValue("height");
     }
 
-    public String searchTopMargin(){
+    public String searchTopMargin() {
         return search_button().getCssValue("margin-top");
     }
 
-    public String searchCenter(){
+    public String searchCenter() {
         return search_button().getCssValue("text-align");
     }
 
-    public String search_borderRadius(){
+    public String search_borderRadius() {
         return search_button().getCssValue("border-radius");
     }
 
-    public boolean isSearchVisible(){
+    public boolean isSearchVisible() {
         return search_button().isDisplayed();
     }
 
-    public String searchFontStyle(){
+    public String searchFontStyle() {
         return search_button().getCssValue("font-style");
     }
 
-    public String searchColor(){
+    public String searchColor() {
         return search_button().getCssValue("color");
-
     }
 
-    public void  searchTap(){
+    public void searchTap() {
         search_button().click();
     }
+
+    public void linkedInTap() {
+        driver.findElement(By.xpath("/html/body/div/section/section/section/footer/section[1]/section[1]/a[3]/img")).click();
+    }
+
+    public void facebookTap() {
+        driver.findElement(By.xpath("/html/body/div/section/section/section/footer/section[1]/section[1]/a[1]")).click();
+    }
+
+    public String jobText() {
+        return job().getText();
+    }
+
+    public String jobFont() {
+        return job().getCssValue("font-family");
+    }
+
+    public String jobFontStyle() {
+        return job().getCssValue("font-style");
+
+    }
+
+    public String jobFontSize() {
+        return job().getCssValue("font-size");
+    }
+
+    public String jobLine(){
+        return job().getCssValue("line-height");
+    }
+
+    public String jobColor(){
+        return driver.findElement(By.xpath("/html/body/div/section/section/div/main/section[1]/h1/span")).getCssValue("color");
+    }
+
+    public String gap(){
+        return avem().getCssValue("margin-top");
+    }
+
+    public String test_diacritics(){
+       return avem().getText();
+    }
 }
-
-
