@@ -26,9 +26,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Set up ChromeDriver
-      env:
-       CHROME_DRIVER: C:\chromedriver.exe
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
