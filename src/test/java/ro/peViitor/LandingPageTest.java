@@ -186,7 +186,7 @@ public class LandingPageTest extends Landing {
     @Story("The content in the border is \"Gaseste-ti jobul dorit acum\"")
     @Test
     public void job_text() {
-        assertEquals(jobText(), "Găseste-ți jobul dorit acum");
+        assertEquals(jobText(), "jobul dorit");
     }
 
     @Story("The font-family used for \"Gaseste-ti jobul dorit acum\" is Poppins")
@@ -231,5 +231,12 @@ public class LandingPageTest extends Landing {
         String s = test_diacritics();
         Normalizer.isNormalized(s, Normalizer.Form.NFD);
     }
+
+    @Story("The font-family used for the text \"Avem X  de oportunitati in acest moment in Romania\" is SF Pro")
+    @Test
+    public void avem_family_font(){
+        assertEquals(avemFontFamily(),"SF Pro");
+    }
+
 }
 

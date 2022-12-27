@@ -15,16 +15,16 @@ public class Landing {
     public WebDriver openBrowser() {
         WebDriverManager.chromedriver().setup();
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
-        driver = new ChromeDriver(options);
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("headless");
+        driver = new ChromeDriver();
         return driver;
     }
 
 
 
     public WebElement alatura_te() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/div/section/a[2]"));
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[1]/a[2]"));
     }
 
     public WebElement instagram() {
@@ -32,11 +32,11 @@ public class Landing {
     }
 
     public WebElement search_button() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/div/main/section[2]/button"));
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/button"));
     }
 
     public WebElement job() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/div/main/section[1]/h1"));
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[1]/h1/span"));
     }
 
     public WebElement avem(){
@@ -112,11 +112,11 @@ public class Landing {
     }
 
     public void linkedInTap() {
-        driver.findElement(By.xpath("/html/body/div/section/section/section/footer/section[1]/section[1]/a[3]/img")).click();
+        driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[1]/a[3]/img")).click();
     }
 
     public void facebookTap() {
-        driver.findElement(By.xpath("/html/body/div/section/section/section/footer/section[1]/section[1]/a[1]")).click();
+        driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[1]/a[1]")).click();
     }
 
     public String jobText() {
@@ -141,7 +141,7 @@ public class Landing {
     }
 
     public String jobColor(){
-        return driver.findElement(By.xpath("/html/body/div/section/section/div/main/section[1]/h1/span")).getCssValue("color");
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[1]/h1/span")).getCssValue("color");
     }
 
     public String gap(){
@@ -150,5 +150,9 @@ public class Landing {
 
     public String test_diacritics(){
        return avem().getText();
+    }
+
+    public String avemFontFamily(){
+        return avem().getCssValue("font-family");
     }
 }
