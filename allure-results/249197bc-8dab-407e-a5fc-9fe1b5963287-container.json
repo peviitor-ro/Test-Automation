@@ -1,1 +1,0 @@
-{"uuid":"249197bc-8dab-407e-a5fc-9fe1b5963287","name":"ro.peViitor.LandingPageTest","children":["c353883f-cc76-4e15-b97d-17fde677fcba"],"befores":[{"name":"startUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1672132044206,"stop":1672132047904}],"afters":[],"start":1672132043945,"stop":1672132048004}
