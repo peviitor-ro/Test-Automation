@@ -20,7 +20,19 @@ public class Landing {
         return driver;
 
     }
-    public WebElement conditii(){
+    public WebElement politica(){
+        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[3]/nav/ul/li[2]/a"));
+    }
+
+    public WebElement flogo(){
+        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/img"));
+    }
+
+    public WebElement all(){
+        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[2]"));
+    }
+
+    public WebElement conditii() {
         return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[3]/nav/ul/li[1]/a"));
     }
 
@@ -229,6 +241,9 @@ public class Landing {
         return organizatie().getCssValue("font-size");
     }
 
+    public String organizatieMargin(){
+        return organizatie().getCssValue("margin-bottom");
+    }
 
     public String infoFontStyle() {
         return info().getCssValue("font-style");
@@ -236,16 +251,74 @@ public class Landing {
 
     public String infoFontSize() {
         return info().getCssValue("font-size");
-
     }
 
     public String infoFontColor() {
         return info().getCssValue("color");
     }
 
-    public void conditiiTap(){
+    public void conditiiTap() {
         conditii().click();
-
     }
+
+    public String conditiiFontStyle() {
+        return conditii().getCssValue("font-style");
+    }
+    public String conditiiFontWeight() {
+        return conditii().getCssValue("font-weight");
+    }
+
+    public String conditiiFontColor(){
+        return conditii().getCssValue("color");
+    }
+
+    public String allFontStyle(){
+        return all().getCssValue("font-style");
+    }
+
+    public String allFontColor(){
+        return all().getCssValue("color");
+    }
+
+    public String flogoHeight(){
+        return flogo().getCssValue("height");
+    }
+
+    public String fLogoWidth(){
+        return flogo().getCssValue("width");
+    }
+
+    public void politicaTap(){
+        politica().click();
+    }
+
+    public String politicaFontStyle(){
+        return politica().getCssValue("font-style");
+    }
+
+    public String politicaFontWeight(){
+        return politica().getCssValue("font-weight");
+    }
+
+    public String politicaFontColor(){
+        return politica().getCssValue("color");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

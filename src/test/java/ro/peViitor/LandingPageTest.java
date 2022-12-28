@@ -1,6 +1,7 @@
 package ro.peViitor;
 
 import io.qameta.allure.Story;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -27,6 +28,7 @@ public class LandingPageTest extends Landing {
     private static final String VOLUNTARI = "https://www.oportunitatisicariere.ro/voluntari";
     private static final String FACEBOOK = "https://www.facebook.com/people/Asociatia-oportunitati-si-cariere/100088634384252/";
     private static final String INSTAGRAM = "https://www.instagram.com/peviitor/";
+    private static final String PRIVACY = "https://legal.peviitor.ro/confidentialitate";
     public WebDriver driver;
 
     public static void verify(WebDriver driver, String PAGE) {
@@ -348,10 +350,93 @@ public class LandingPageTest extends Landing {
 
     @Story("Tapping on \"Condiții de utilizare\" footer section text")
     @Test
-    public void conditii_tap(){
+    public void conditii_tap() {
         conditiiTap();
         verify(driver, CONDITII);
     }
 
+    @Story(" \"Condiții de utilizare\" footer section text font - style")
+    @Test
+    public void conditii_font_style() {
+        assertEquals(conditiiFontStyle(), "normal");
+    }
+
+
+    @Story(" \"Condiții de utilizare\" footer section text font - weight ")
+    @Test
+    public void conditii_font_weight() {
+        assertEquals(conditiiFontWeight(), "400");
+    }
+
+    @Story("\"Condiții de utilizare\" footer text font color ")
+    @Test
+    public void conditii_font_color(){
+        assertEquals(conditiiFontColor(), "rgba(9, 10, 10, 1)");
+    }
+
+
+    @Story(" \"Condiții de utilizare\" footer section text font - style")
+    @Test
+    public void all_font_style() {
+        assertEquals(allFontStyle(), "normal");
+    }
+
+    @Story("\" © 2022 - Toate drepturile rezervate PE VIITOR.\" footer text font color ")
+    @Test
+    public void all_font_color() {
+        assertEquals(allFontColor(), "rgba(111, 119, 122, 1)");
+    }
+
+    @Ignore
+    @Story("Footer logo height ")
+    @Test
+    public void f_logo_height() {
+        assertEquals(flogoHeight(), "38px");
+    }
+
+    @Ignore
+    @Story("Footer logo width")
+    @Test
+    public void f_logo_width(){
+        assertEquals(fLogoWidth(), "127px");
+    }
+
+    @Story("Line height between footer section between \"Alătură-te cauzei noastre\" and \"Informații suplimentare\"")
+    @Test
+    public void distance_elements(){
+        assertEquals(driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[2]/nav"))
+                .getCssValue("margin-bottom"), "30px");
+    }
+
+    @Story("Line height between footer section between \"Organizație\" and \"Despre noi\"")
+    @Test
+    public void distamce_element(){
+        assertEquals(organizatieMargin(), "16px");
+    }
+
+    @Story("Tapping on \"Politica de confidențialitate\" footer section text")
+    @Test
+    public void politica_tap(){
+        politicaTap();
+        verify(driver, PRIVACY);
+    }
+
+    @Story(" \"Politica de confidențialitate\" footer section text font - style")
+    @Test
+    public void politica_font_style(){
+        assertEquals(politicaFontStyle(), "normal");
+    }
+
+    @Story(" \"Politica de confidențialitate\" footer section text font - weight ")
+    @Test
+    public void politica_font_weight(){
+        assertEquals(politicaFontWeight(), "400");
+    }
+
+    @Story("\"Politica de confidențialitate\" footer text font color  ")
+    @Test
+    public void politica_font_color(){
+        assertEquals(politicaFontColor(), "rgba(9, 10, 10, 1)");
+    }
 }
 
