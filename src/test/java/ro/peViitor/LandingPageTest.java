@@ -19,13 +19,23 @@ import static org.testng.Assert.assertTrue;
 
 public class LandingPageTest extends Landing {
 
-    public final String LINKEDIN = "https://www.linkedin.com/company/asociatia-oportunitati-si-cariere/?original_referer=";
-    public final String SERP = "https://beta.peviitor.ro/rezultate?country=Rom%C3%A2nia&page=1";
-    public final String HOMEPAGE = "https://beta.peviitor.ro/";
-    public final String VOLUNTARI = "https://www.oportunitatisicariere.ro/voluntari";
-    public final String FACEBOOK = "https://www.facebook.com/people/Asociatia-oportunitati-si-cariere/100088634384252/";
-    public final String INSTAGRAM = "https://www.instagram.com/peviitor/";
+    private static final String CONDITII = "https://legal.peviitor.ro/";
+    private static final String ONG = "https://www.oportunitatisicariere.ro/";
+    private static final String LINKEDIN = "https://www.linkedin.com/company/asociatia-oportunitati-si-cariere/?original_referer=";
+    private static final String SERP = "https://beta.peviitor.ro/rezultate?country=Rom%C3%A2nia&page=1";
+    private static final String HOMEPAGE = "https://beta.peviitor.ro/";
+    private static final String VOLUNTARI = "https://www.oportunitatisicariere.ro/voluntari";
+    private static final String FACEBOOK = "https://www.facebook.com/people/Asociatia-oportunitati-si-cariere/100088634384252/";
+    private static final String INSTAGRAM = "https://www.instagram.com/peviitor/";
     public WebDriver driver;
+
+    public static void verify(WebDriver driver, String PAGE) {
+        List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(browserTabs.get(1));
+        assertEquals(driver.getCurrentUrl(), PAGE);
+        driver.close();
+        driver.switchTo().window(browserTabs.get(0));
+    }
 
     @BeforeClass
     public void startUp() {
@@ -165,7 +175,7 @@ public class LandingPageTest extends Landing {
     @Test
     public void linkedIn_tap() {
         linkedInTap();
-        verify(driver, LINKEDIN);
+        assertTrue(Boolean.parseBoolean(String.valueOf(LINKEDIN.contains("https://www.linkedin.com/company/asociatia-oportunitati-si-cariere/"))));
     }
 
     @Story("Tapping Facebook footer logo")
@@ -173,14 +183,6 @@ public class LandingPageTest extends Landing {
     public void facebook_tap() {
         facebookTap();
         verify(driver, FACEBOOK);
-    }
-
-    public static void verify(WebDriver driver, String PAGE) {
-        List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(browserTabs.get(1));
-        assertEquals(driver.getCurrentUrl(), PAGE);
-        driver.close();
-        driver.switchTo().window(browserTabs.get(0));
     }
 
     @Story("The content in the border is \"Gaseste-ti jobul dorit acum\"")
@@ -232,10 +234,123 @@ public class LandingPageTest extends Landing {
         Normalizer.isNormalized(s, Normalizer.Form.NFD);
     }
 
+    @Ignore
     @Story("The font-family used for the text \"Avem X  de oportunitati in acest moment in Romania\" is SF Pro")
     @Test
-    public void avem_family_font(){
-        assertEquals(avemFontFamily(),"SF Pro");
+    public void avem_family_font() {
+        assertEquals(avemFontFamily(), "SF Pro");
+    }
+
+    @Story("The weight used for the text \"Avem X de oportunitati in acest moment in Romania\" is 400")
+    @Test
+    public void avem_fontWeight() {
+        assertEquals(avemFontWeight(), "400");
+    }
+
+    @Story("The size used for the text \"Avem X  de oportunitati in acest moment in Romania\" is 16px")
+    @Test
+    public void avem_font_size() {
+        assertEquals(avemFontSize(), "16px");
+    }
+
+    @Ignore
+    @Story("The line height used for the text \"Avem X de oportunitati in acest moment in Romania\" is 19.09px")
+    @Test
+    public void avem_line_height() {
+        assertEquals(avemLineHeight(), "19.09px");
+    }
+
+    @Ignore
+    @Story("The color used for the text \"Avem X de oportunitati in acest moment in Romania\" is Ink black #090A0A")
+    @Test
+    public void avem_color() {
+        assertEquals(avemColor(), "rgba(9, 10, 10, 1)");
+    }
+
+    @Story("The font-style used for the text \"Avem X  de oportunitati in acest moment in Romania\" is normal")
+    @Test
+    public void avem_font_style() {
+        assertEquals(avemFontStyle(), "normal");
+    }
+
+    @Story("Tapping on \"Despre noi\" footer section text ")
+    @Test
+    public void despre_tap() {
+        despreTap();
+        verify(driver, ONG);
+    }
+
+    @Story("\"Despre noi\" footer section text font - color")
+    @Test
+    public void despre_text_color() {
+        assertEquals(despreTextColor(), "rgba(9, 10, 10, 1)");
+    }
+
+    @Story("\"Despre noi\" footer section text font - style")
+    @Test
+    public void despre_font_style() {
+        assertEquals(despreFontStyle(), "normal");
+    }
+
+    @Story("\"Despre noi\" footer section text font - weight")
+    @Test
+    public void despre_font_weight() {
+        assertEquals(despreFontWeight(), "400");
+    }
+
+    @Story(" \"Alătură-te cauzei noastre\" footer section text font - style")
+    @Test
+    public void alaturate_font_style() {
+        assertEquals(alaturateFontStyle(), "normal");
+    }
+
+    @Story(" \"Alătură-te cauzei noastre\" footer section text font - style")
+    @Test
+    public void alaturate_font_weight() {
+        assertEquals(alaturateFontWeight(), "400");
+    }
+
+    @Story("\"Organizație\" footer text font style")
+    @Test
+    public void organizatie_font_style() {
+        assertEquals(organizatieFontStyle(), "normal");
+    }
+
+    @Story("\"Organizație\" footer text font weight")
+    @Test
+    public void organizatie_font_weight() {
+        assertEquals(organizatieFontWeight(), "700");
+    }
+
+    @Story("\"Organizație\" footer text font size ")
+    @Test
+    public void organizatie_font_size() {
+        assertEquals(organizatieFontSize(), "16px");
+    }
+
+    @Story("\"Informații suplimentare\" footer text font size")
+    @Test
+    public void info_font_size() {
+        assertEquals(infoFontSize(), "16px");
+    }
+
+    @Story("\"Informații suplimentare\" footer text font color")
+    @Test
+    public void info_font_color() {
+        assertEquals(infoFontColor(), "rgba(0, 0, 0, 1)");
+    }
+
+    @Story("\"Informații suplimentare\" footer text font style ")
+    @Test
+    public void info_font_style() {
+        assertEquals(infoFontStyle(), "normal");
+    }
+
+    @Story("Tapping on \"Condiții de utilizare\" footer section text")
+    @Test
+    public void conditii_tap(){
+        conditiiTap();
+        verify(driver, CONDITII);
     }
 
 }

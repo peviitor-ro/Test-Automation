@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 
 public class Landing {
@@ -19,9 +18,19 @@ public class Landing {
 //        options.addArguments("headless");
         driver = new ChromeDriver();
         return driver;
+
+    }
+    public WebElement conditii(){
+        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[3]/nav/ul/li[1]/a"));
     }
 
+    public WebElement info() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[3]/h3"));
+    }
 
+    public WebElement organizatie() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[2]/h3"));
+    }
 
     public WebElement alatura_te() {
         return driver.findElement(By.xpath("/html/body/div/section/section/section[1]/a[2]"));
@@ -39,8 +48,16 @@ public class Landing {
         return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[1]/h1/span"));
     }
 
-    public WebElement avem(){
+    public WebElement avem() {
         return driver.findElement(By.className("description"));
+    }
+
+    public WebElement alaturate() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[2]/nav/ul/li[2]/a"));
+    }
+
+    public WebElement despre() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[2]/nav/ul/li[1]/a"));
     }
 
     public String joinFontStyle() {
@@ -136,23 +153,99 @@ public class Landing {
         return job().getCssValue("font-size");
     }
 
-    public String jobLine(){
+    public String jobLine() {
         return job().getCssValue("line-height");
     }
 
-    public String jobColor(){
+    public String jobColor() {
         return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[1]/h1/span")).getCssValue("color");
     }
 
-    public String gap(){
+    public String gap() {
         return avem().getCssValue("margin-top");
     }
 
-    public String test_diacritics(){
-       return avem().getText();
+    public String test_diacritics() {
+        return avem().getText();
     }
 
-    public String avemFontFamily(){
+    public String avemFontFamily() {
         return avem().getCssValue("font-family");
     }
+
+    public String avemFontWeight() {
+        return avem().getCssValue("font-weight");
+    }
+
+    public String avemFontSize() {
+        return avem().getCssValue("font-size");
+    }
+
+    public String avemLineHeight() {
+        return avem().getCssValue("line-height");
+    }
+
+    public String avemColor() {
+        return avem().getCssValue("color");
+    }
+
+    public String avemFontStyle() {
+        return avem().getCssValue("font-style");
+    }
+
+    public void despreTap() {
+        despre().click();
+    }
+
+    public String despreTextColor() {
+        return despre().getCssValue("color");
+    }
+
+    public String despreFontStyle() {
+        return despre().getCssValue("font-style");
+    }
+
+    public String despreFontWeight() {
+        return despre().getCssValue("font-weight");
+    }
+
+    public String alaturateFontStyle() {
+        return alaturate().getCssValue("font-style");
+    }
+
+    public String alaturateFontWeight() {
+        return alaturate().getCssValue("font-weight");
+    }
+
+    public String organizatieFontStyle() {
+        return organizatie().getCssValue("font-style");
+    }
+
+    public String organizatieFontWeight() {
+        return organizatie().getCssValue("font-weight");
+    }
+
+    public String organizatieFontSize() {
+        return organizatie().getCssValue("font-size");
+    }
+
+
+    public String infoFontStyle() {
+        return info().getCssValue("font-style");
+    }
+
+    public String infoFontSize() {
+        return info().getCssValue("font-size");
+
+    }
+
+    public String infoFontColor() {
+        return info().getCssValue("color");
+    }
+
+    public void conditiiTap(){
+        conditii().click();
+
+    }
+
 }
