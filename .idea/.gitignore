@@ -6,5 +6,6 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-//allure-results
-//target
+*.json
+/allure-results
+/target
