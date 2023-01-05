@@ -9,13 +9,13 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import ro.peViitor.pages.Landing;
 
+
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 
 public class LandingPageTest extends Landing {
@@ -92,6 +92,13 @@ public class LandingPageTest extends Landing {
     public void join_tap() {
         voluntariRedirect();
         verify(driver, VOLUNTARI);
+    }
+
+    @Story("\"Alătură-te\" button text has diacritics")
+    @Test
+    public void alaturate_diacritics() {
+        String s = teste_diacritics();
+        Normalizer.isNormalized(s, Normalizer.Form.NFD);
     }
 
     private void voluntariRedirect() {
@@ -370,7 +377,7 @@ public class LandingPageTest extends Landing {
 
     @Story("\"Condiții de utilizare\" footer text font color ")
     @Test
-    public void conditii_font_color(){
+    public void conditii_font_color() {
         assertEquals(conditiiFontColor(), "rgba(9, 10, 10, 1)");
     }
 
@@ -397,46 +404,141 @@ public class LandingPageTest extends Landing {
     @Ignore
     @Story("Footer logo width")
     @Test
-    public void f_logo_width(){
+    public void f_logo_width() {
         assertEquals(fLogoWidth(), "127px");
     }
 
     @Story("Line height between footer section between \"Alătură-te cauzei noastre\" and \"Informații suplimentare\"")
     @Test
-    public void distance_elements(){
+    public void distance_elements() {
         assertEquals(driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[2]/nav"))
                 .getCssValue("margin-bottom"), "30px");
     }
 
     @Story("Line height between footer section between \"Organizație\" and \"Despre noi\"")
     @Test
-    public void distamce_element(){
+    public void distamce_element() {
         assertEquals(organizatieMargin(), "16px");
     }
 
     @Story("Tapping on \"Politica de confidențialitate\" footer section text")
     @Test
-    public void politica_tap(){
+    public void politica_tap() {
         politicaTap();
         verify(driver, PRIVACY);
     }
 
     @Story(" \"Politica de confidențialitate\" footer section text font - style")
     @Test
-    public void politica_font_style(){
+    public void politica_font_style() {
         assertEquals(politicaFontStyle(), "normal");
     }
 
     @Story(" \"Politica de confidențialitate\" footer section text font - weight ")
     @Test
-    public void politica_font_weight(){
+    public void politica_font_weight() {
         assertEquals(politicaFontWeight(), "400");
     }
 
     @Story("\"Politica de confidențialitate\" footer text font color  ")
     @Test
-    public void politica_font_color(){
+    public void politica_font_color() {
         assertEquals(politicaFontColor(), "rgba(9, 10, 10, 1)");
+    }
+
+    @Story("The logo is not clickable")
+    @Test
+    public void pe_viitor_logo_tap() {
+        peViitorLogo();
+    }
+
+    @Story("Logo is displayed in header.")
+    @Test
+    public void logoDisplayed() {
+        assertTrue(isLogoVisible());
+    }
+
+    @Story("Logo width.")
+    @Test
+    public void logo_size(){
+        assertEquals(logoSize(),"(93, 28)");
+    }
+
+    @Story("The distance between the top border of header and the logo is 16px.")
+    @Test
+    public void top_border_header(){
+        assertEquals(topBorderHeader(),"16px");
+    }
+
+    @Story("The distance between the left border of header and the logo is 20px.")
+    @Test
+    public void left_border_header(){
+        assertEquals(leftBorderHeader(),"20px");
+    }
+
+    @Story("The distance between the bottom border of header and the logo  is 16px.")
+    @Test
+    public void bottom_border_header(){
+        assertEquals(bottomBorderHeader(),"16px");
+    }
+
+    @Story("The content in the border is \"Gaseste-ti jobul dorit acum\"")
+    @Test
+    public void gaseste_ti_jobul_dorit_acum(){
+        assertTrue(isGasesteTiJobulDoritAcumVisible());
+    }
+
+    @Story("The font-family used for \"Gaseste-ti jobul dorit acum\" is Poppins")
+    @Test
+    public void font_family_gasete_ti_jobul_dorit_acum(){
+        assertTrue(fontFamilyGaseteTiJobulDoritAcum().contains("Poppins"));
+    }
+
+    @Story("The font-style for the text \"Gaseste-ti jobul dorit acum\" is normal")
+    @Test
+    public void font_style_gasete_ti_jobul_dorit_acum(){
+        assertEquals(fontStyleGaseteTiJobulDoritAcum(),"normal");
+    }
+
+    @Story("The size used for \"Gaseste-ti jobul dorit\" is 26px")
+    @Test
+    public void size_gasete_ti_jobul_dorit_acum(){
+        assertEquals(sizeGaseteTiJobulDoritAcum(),"26px");
+    }
+    @Story("The line height used for \"Gaseste-ti jobul dorit acum\" is 32px")
+    @Test
+    public void height_gasete_ti_jobul_dorit_acum(){
+        assertEquals(lineHeightGaseteTiJobulDoritAcum(),"32px");
+    }
+
+    @Story("The outer border of the first search bar is 1px.")
+    @Test
+    public void outer_border_1st_Search_Bar(){
+        assertTrue(outerBorder1stSearchBar().contains("1px"));
+    }
+
+    @Story("In the first search bar we have a magnifying glass.")
+    @Test
+    public void magnifying_glass(){
+        assertTrue(magnifyingGlassIsVisible());
+    }
+
+    @Story("The magnifying glass is not clickable.")
+    @Test
+    public void click_magnifying_glass(){
+        assertTrue(clickMagnifyingGlass());
+    }
+
+    @Story("The position of the magnifying glass in the first search box is 'absolute'")
+    @Test
+    public void position_magnifying_glass(){
+        assertEquals(positionMagnifyingGlass(),"absolute");
+    }
+
+    @Story("The first search bar has the text 'Ce doriți să lucrați?' ")
+    @Test
+    public void ce_doriti_sa_lucrati(){
+       assertEquals(ceDoritiSaLucrati(),"Ce doriți să lucrați?");
     }
 }
 

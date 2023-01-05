@@ -20,15 +20,16 @@ public class Landing {
         return driver;
 
     }
-    public WebElement politica(){
+
+    public WebElement politica() {
         return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[3]/nav/ul/li[2]/a"));
     }
 
-    public WebElement flogo(){
+    public WebElement flogo() {
         return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/img"));
     }
 
-    public WebElement all(){
+    public WebElement all() {
         return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[2]"));
     }
 
@@ -64,12 +65,32 @@ public class Landing {
         return driver.findElement(By.className("description"));
     }
 
-    public WebElement alaturate() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[2]/nav/ul/li[2]/a"));
-    }
-
     public WebElement despre() {
         return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[2]/nav/ul/li[1]/a"));
+    }
+
+    public WebElement logo() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[1]/a[1]/img"));
+    }
+
+    public WebElement sectionTopBarBorder() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[1]"));
+    }
+
+    public WebElement gasesteTiJobulDoritAcum() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[1]/h1"));
+    }
+
+    public WebElement firstSearchBar() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div/div[1]"));
+    }
+
+    public WebElement magnifyingGlass() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div/div[1]/img"));
+    }
+
+    public WebElement placeholder() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div/div[1]/input"));
     }
 
     public String joinFontStyle() {
@@ -181,6 +202,10 @@ public class Landing {
         return avem().getText();
     }
 
+    public String teste_diacritics() {
+        return alatura_te().getText();
+    }
+
     public String avemFontFamily() {
         return avem().getCssValue("font-family");
     }
@@ -222,11 +247,11 @@ public class Landing {
     }
 
     public String alaturateFontStyle() {
-        return alaturate().getCssValue("font-style");
+        return alatura_te().getCssValue("font-style");
     }
 
     public String alaturateFontWeight() {
-        return alaturate().getCssValue("font-weight");
+        return alatura_te().getCssValue("font-weight");
     }
 
     public String organizatieFontStyle() {
@@ -241,7 +266,7 @@ public class Landing {
         return organizatie().getCssValue("font-size");
     }
 
-    public String organizatieMargin(){
+    public String organizatieMargin() {
         return organizatie().getCssValue("margin-bottom");
     }
 
@@ -264,61 +289,110 @@ public class Landing {
     public String conditiiFontStyle() {
         return conditii().getCssValue("font-style");
     }
+
     public String conditiiFontWeight() {
         return conditii().getCssValue("font-weight");
     }
 
-    public String conditiiFontColor(){
+    public String conditiiFontColor() {
         return conditii().getCssValue("color");
     }
 
-    public String allFontStyle(){
+    public String allFontStyle() {
         return all().getCssValue("font-style");
     }
 
-    public String allFontColor(){
+    public String allFontColor() {
         return all().getCssValue("color");
     }
 
-    public String flogoHeight(){
+    public String flogoHeight() {
         return flogo().getCssValue("height");
     }
 
-    public String fLogoWidth(){
+    public String fLogoWidth() {
         return flogo().getCssValue("width");
     }
 
-    public void politicaTap(){
+    public void politicaTap() {
         politica().click();
     }
 
-    public String politicaFontStyle(){
+    public String politicaFontStyle() {
         return politica().getCssValue("font-style");
     }
 
-    public String politicaFontWeight(){
+    public String politicaFontWeight() {
         return politica().getCssValue("font-weight");
     }
 
-    public String politicaFontColor(){
+    public String politicaFontColor() {
         return politica().getCssValue("color");
     }
 
+    public void peViitorLogo() {
+        logo().click();
+    }
 
+    public boolean isLogoVisible() {
+        return logo().isDisplayed();
+    }
 
+    public String logoSize() {
+        return String.valueOf(logo().getSize());
+    }
 
+    public String topBorderHeader() {
+        return sectionTopBarBorder().getCssValue("padding-top");
+    }
 
+    public String leftBorderHeader() {
+        return sectionTopBarBorder().getCssValue("padding-left");
+    }
 
+    public String bottomBorderHeader() {
+        return sectionTopBarBorder().getCssValue("padding-bottom");
+    }
 
+    public boolean isGasesteTiJobulDoritAcumVisible() {
+        return gasesteTiJobulDoritAcum().isDisplayed();
+    }
 
+    public String fontFamilyGaseteTiJobulDoritAcum() {
+        return gasesteTiJobulDoritAcum().getCssValue("font-family");
+    }
 
+    public String fontStyleGaseteTiJobulDoritAcum() {
+        return gasesteTiJobulDoritAcum().getCssValue("font-style");
+    }
 
+    public String sizeGaseteTiJobulDoritAcum() {
+        return gasesteTiJobulDoritAcum().getCssValue("font-size");
+    }
 
+    public String lineHeightGaseteTiJobulDoritAcum() {
+        return gasesteTiJobulDoritAcum().getCssValue("line-height");
+    }
 
+    public String outerBorder1stSearchBar() {
+        return firstSearchBar().getCssValue("border-bottom");
+    }
 
+    public boolean magnifyingGlassIsVisible() {
+        return magnifyingGlass().isDisplayed();
+    }
 
+    public boolean clickMagnifyingGlass() {
+        return magnifyingGlass().isEnabled();
+    }
 
+    public String positionMagnifyingGlass() {
+        return magnifyingGlass().getCssValue("position");
+    }
 
+    public String ceDoritiSaLucrati() {
+        return placeholder().getAttribute("placeholder");
+    }
 
 
 }
