@@ -5,6 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+import static org.testng.Assert.*;
 
 
 public class Landing {
@@ -13,16 +16,17 @@ public class Landing {
 
     public WebDriver openBrowser() {
         WebDriverManager.chromedriver().setup();
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "d:\\chromedriver.exe");
 //        ChromeOptions options = new ChromeOptions();
 //        options.addArguments("headless");
         driver = new ChromeDriver();
         return driver;
-
     }
 
     public WebElement politica() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[3]/nav/ul/li[2]/a"));
+        WebElement ele = driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[3]/nav/ul/li[2]/a"));
+        assertEquals(ele.getText(), "Politica de confidențialitate");
+        return ele;
     }
 
     public WebElement flogo() {
@@ -30,23 +34,33 @@ public class Landing {
     }
 
     public WebElement all() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[2]"));
+        WebElement all = driver.findElement(By.xpath("/html/body/div/section/section/footer/section[2]"));
+        assertEquals(all.getText(), "© 2022 - Toate drepturile rezervate PE VIITOR.");
+        return all;
     }
 
     public WebElement conditii() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[3]/nav/ul/li[1]/a"));
+        WebElement terms = driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[3]/nav/ul/li[1]/a"));
+        assertEquals(terms.getText(), "Condiții de utilizare");
+        return terms;
     }
 
     public WebElement info() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[3]/h3"));
+        WebElement info = driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[3]/h3"));
+        assertEquals(info.getText(), "Informații suplimentare");
+        return info;
     }
 
     public WebElement organizatie() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[2]/h3"));
+        WebElement ele = driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[2]/h3"));
+        assertEquals(ele.getText(), "Organizație");
+        return ele;
     }
 
     public WebElement alatura_te() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/section[1]/a[2]"));
+        WebElement ele = driver.findElement(By.xpath("/html/body/div/section/section/section[1]/a[2]"));
+        assertEquals(ele.getText(), "Alătură-te");
+        return ele;
     }
 
     public WebElement instagram() {
@@ -54,19 +68,26 @@ public class Landing {
     }
 
     public WebElement search_button() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/button"));
+        WebElement button = driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/button"));
+        assertEquals(button.getText(), "Caută");
+        return button;
     }
 
     public WebElement job() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[1]/h1/span"));
+        WebElement ele = driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[1]/h1/span"));
+        assertEquals(ele.getText(), "jobul dorit");
+        return ele;
     }
 
     public WebElement avem() {
-        return driver.findElement(By.className("description"));
+        WebElement av = driver.findElement(By.className("description"));
+        return av;
     }
 
     public WebElement despre() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[2]/nav/ul/li[1]/a"));
+        WebElement ele = driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[2]/nav/ul/li[1]/a"));
+        assertEquals(ele.getText(), "Despre noi");
+        return ele;
     }
 
     public WebElement logo() {
@@ -78,11 +99,14 @@ public class Landing {
     }
 
     public WebElement gasesteTiJobulDoritAcum() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[1]/h1"));
+        WebElement ele = driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[1]/h1"));
+        assertEquals(ele.getText(),"Găsește-ți jobul dorit acum");
+        return ele;
     }
 
     public WebElement firstSearchBar() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div/div[1]"));
+        WebElement search = driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div/div[1]"));
+        return search;
     }
 
     public WebElement magnifyingGlass() {
