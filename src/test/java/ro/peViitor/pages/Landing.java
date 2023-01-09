@@ -5,9 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.testng.Assert.*;
+import java.time.Duration;
+
+import static org.testng.Assert.assertEquals;
 
 
 public class Landing {
@@ -16,7 +19,7 @@ public class Landing {
 
     public WebDriver openBrowser() {
         WebDriverManager.chromedriver().setup();
-        System.setProperty("webdriver.chrome.driver", "d:\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "c:\\chromedriver.exe");
 //        ChromeOptions options = new ChromeOptions();
 //        options.addArguments("headless");
         driver = new ChromeDriver();
@@ -100,7 +103,7 @@ public class Landing {
 
     public WebElement gasesteTiJobulDoritAcum() {
         WebElement ele = driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[1]/h1"));
-        assertEquals(ele.getText(),"Găsește-ți jobul dorit acum");
+        assertEquals(ele.getText(), "Găsește-ți jobul dorit acum");
         return ele;
     }
 
@@ -122,6 +125,7 @@ public class Landing {
     }
 
     public String joinColor() {
+
         return alatura_te().getCssValue("color");
     }
 
@@ -418,5 +422,16 @@ public class Landing {
         return placeholder().getAttribute("placeholder");
     }
 
+    public String cedoritiFontStyle(){
+        return placeholder().getCssValue("font-style");
+    }
 
+    public String fontSizeSearch() {
+        return placeholder().getCssValue("font-size");
+    }
+
+    public String magnifyingglassPosition(){
+        return magnifyingGlass().getCssValue("position");
+
+    }
 }
