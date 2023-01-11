@@ -6,8 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="peViitor" />
+        <module name="mobile" />
+        <module name="Test-Automation" />
         <module name="peviitor" />
+        <module name="peViitor" />
       </profile>
     </annotationProcessing>
   </component>

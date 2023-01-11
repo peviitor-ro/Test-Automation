@@ -540,5 +540,23 @@ public class LandingPageTest extends Landing {
     public void ce_doriti_sa_lucrati(){
        assertEquals(ceDoritiSaLucrati(),"Ce doriți să lucrați?");
     }
+
+    @Story("The text in the first search bar has the height of 16px.")
+    @Test
+    public void font_size_searchbar(){
+        assertEquals(fontSizeSearch(), "16px");
+    }
+
+    @Story("The position of the magnifying glass in the first search box is 'absolute'")
+    @Test
+    public void magnifying_glass_position(){
+        assertEquals(magnifyingglassPosition(),"absolute");
+    }
+
+    @Story("'Ce doriți să lucrați?' has the font-style normal.")
+    @Test
+    public void magnifying_glass_fontStyle(){
+        assertEquals(cedoritiFontStyle(), "normal");
+    }
 }
 
