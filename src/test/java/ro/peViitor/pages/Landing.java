@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 
 import static java.lang.Thread.sleep;
@@ -18,14 +19,14 @@ public class Landing {
     public WebDriver openBrowser() {
         WebDriverManager.chromedriver().setup();
         System.setProperty("webdriver.chrome.driver", "c:\\chromedriver.exe");
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("headless");
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");
+        driver = new ChromeDriver(options);
         return driver;
     }
 
     public WebElement politica() {
-        WebElement ele = driver.findElement(By.xpath("/html/body/div/section/section/footer/section[1]/section[3]/nav/ul/li[2]/a"));
+        WebElement ele = driver.findElement(By.xpath("//*[@id=\"root\"]/section/section/footer/section[1]/section[3]/nav/ul/li[2]/a"));
         assertEquals(ele.getText(), "Politica de confidențialitate");
         return ele;
     }
@@ -81,8 +82,7 @@ public class Landing {
     }
 
     public WebElement avem() {
-        WebElement av = driver.findElement(By.className("description"));
-        return av;
+        return driver.findElement(By.className("description"));
     }
 
     public WebElement despre() {
@@ -106,8 +106,17 @@ public class Landing {
     }
 
     public WebElement firstSearchBar() {
-        WebElement search = driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div/div[1]"));
-        return search;
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div/div[1]"));
+    }
+
+    public WebElement alaturate_cauzei() {
+        WebElement alaturate_cauza = driver.findElement(By.xpath("/html/body/div/section/section/section[3]/a"));
+        return alaturate_cauza;
+    }
+
+    public WebElement doresti() {
+        WebElement elem = driver.findElement(By.xpath("/html/body/div/section/section/section[3]/h3"));
+        return elem;
     }
 
     public WebElement magnifyingGlass() {
@@ -126,11 +135,11 @@ public class Landing {
         return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div/div[2]/select"));
     }
 
-    public WebElement locationIcon(){
+    public WebElement locationIcon() {
         return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div/div[2]/img"));
     }
 
-    public WebElement blueBanner(){
+    public WebElement blueBanner() {
         return driver.findElement(By.xpath("/html/body/div/section/section/section[3]"));
     }
 
@@ -139,7 +148,6 @@ public class Landing {
     }
 
     public String joinColor() {
-
         return alatura_te().getCssValue("color");
     }
 
@@ -221,7 +229,6 @@ public class Landing {
 
     public String jobFontStyle() {
         return job().getCssValue("font-style");
-
     }
 
     public String jobFontSize() {
@@ -356,8 +363,9 @@ public class Landing {
         return flogo().getCssValue("width");
     }
 
-    public void politicaTap() {
+    public void politicaTap() throws InterruptedException {
         politica().click();
+        sleep(1000);
     }
 
     public String politicaFontStyle() {
@@ -446,7 +454,6 @@ public class Landing {
 
     public String magnifyingGlassPosition() {
         return magnifyingGlass().getCssValue("position");
-
     }
 
     public String ssd(String data) {
@@ -474,10 +481,6 @@ public class Landing {
         return placeholderCountry().getCssValue("font-style");
     }
 
-    public String positionTextSecondSearchBar() {
-        return placeholderCountry().getCssValue("position");
-    }
-
     public String defaultTextSecondSearchBar() {
         return (placeholderCountry().getText());
     }
@@ -486,7 +489,7 @@ public class Landing {
         return locationIcon().isDisplayed();
     }
 
-    public String romaniaColor(){
+    public String romaniaColor() {
         return placeholderCountry().getCssValue("color");
     }
 
@@ -495,14 +498,33 @@ public class Landing {
         select.selectByVisibleText("Toate");
         sleep(3000);
         select.selectByVisibleText("România");
-
     }
 
-    public String blueBannerColorCode(){
+    public String blueBannerColorCode() {
         return blueBanner().getCssValue("background-color");
-
     }
 
+    public void alaturateCauzeiTap() {
+        alaturate_cauzei().click();
+    }
 
+    public String dorestiColor() {
+        return doresti().getCssValue("color");
+    }
 
+    public String dorestiFont() {
+        return doresti().getCssValue("font-family");
+    }
+
+    public String dorestiFontStyle() {
+        return doresti().getCssValue("font-style");
+    }
+
+    public String dorestiFontSize() {
+        return doresti().getCssValue("font-size");
+    }
+
+    public String dorestiAlign() {
+        return doresti().getCssValue("text-align");
+    }
 }

@@ -3,6 +3,7 @@ package ro.peViitor;
 import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
@@ -44,11 +45,10 @@ public class LandingPageTest extends Landing {
         driver.get(HOMEPAGE);
     }
 
-//    @Ignore
-//    @AfterClass
-//    public void cleanUp() {
-//        driver.quit();
-//    }
+    @AfterClass
+    public void cleanUp() {
+        driver.quit();
+    }
 
     @Story("Page title: peviitor I motor de căutare locuri de muncă TC734")
     @Test
@@ -89,8 +89,15 @@ public class LandingPageTest extends Landing {
 
     @Story("Tapping on \"Alătură-te\" button TC182 ")
     @Test
-    public void join_tap() {
-        voluntariRedirect();
+    public void alaturate_tap() {
+        alaturate_redirect();
+        verify(driver, VOLUNTARI);
+    }
+
+    @Story("Tapping on \"Alătură-te\" button T754 ")
+    @Test
+    public void alaturate_cauzei_tap() {
+        alaturateCauzeiTap();
         verify(driver, VOLUNTARI);
     }
 
@@ -101,7 +108,7 @@ public class LandingPageTest extends Landing {
         Normalizer.isNormalized(s, Normalizer.Form.NFD);
     }
 
-    private void voluntariRedirect() {
+    private void alaturate_redirect() {
         joinTap();
     }
 
@@ -181,10 +188,10 @@ public class LandingPageTest extends Landing {
     }
 
     @Story("Tapping LinkedIn footer logo ")
-    @Test
+    @Test(priority = 99)
     public void linkedIn_tap() {
         linkedInTap();
-        assertTrue(Boolean.parseBoolean(String.valueOf(LINKEDIN.contains("https://www.linkedin.com/company/asociatia-oportunitati-si-cariere/"))));
+        assertTrue((LINKEDIN.contains("https://www.linkedin.com/company/asociatia-oportunitati-si-cariere/")));
     }
 
     @Story("Tapping Facebook footer logo")
@@ -422,8 +429,8 @@ public class LandingPageTest extends Landing {
     }
 
     @Story("Tapping on \"Politica de confidențialitate\" footer section text")
-    @Test
-    public void politica_tap() {
+    @Test()
+    public void politica_tap() throws InterruptedException {
         politicaTap();
         verify(driver, PRIVACY);
     }
@@ -597,12 +604,6 @@ public class LandingPageTest extends Landing {
         assertEquals(textFontStyleSecondSearchBar(), "normal");
     }
 
-    @Ignore
-    @Story("The position of the text 'România' in the second search box ")
-    @Test
-    public void position_text_second_search_bar() {
-        assertEquals(positionTextSecondSearchBar(), "absolute");
-    }
 
     @Story("In the second search bar we have the text 'România' by default")
     @Test
@@ -633,6 +634,42 @@ public class LandingPageTest extends Landing {
     @Test
     public void blue_banner(){
         assertEquals(blueBannerColorCode(),"rgba(3, 34, 57, 1)");
+    }
+
+    @Story("Inside the blue section we have the text box \"Dorești să ajuți alți oameni?\"")
+    @Test
+    public void doresti_visible(){
+        assertTrue(doresti().isDisplayed());
+    }
+
+    @Story("\"Dorești să ajuți alți oameni?\" font color is white(#FFFFFF).")
+    @Test
+    public void doresti_color(){
+        assertEquals(dorestiColor(),"rgba(255, 255, 255, 1)");
+    }
+
+    @Story("\"Dorești să ajuți alți oameni?\" font family is Poppins.")
+    @Test
+    public void doresti_font_family(){
+        assertTrue(dorestiFont().startsWith("Poppins"));
+    }
+
+    @Story("“Dorești să ajuți alți oameni?” font style is normal.")
+    @Test
+    public void doresti_font_style(){
+        assertEquals(dorestiFontStyle(),"normal");
+    }
+
+    @Story("“Dorești să ajuți alți oameni?” font size is 20px.")
+    @Test
+    public void doresti_font_size(){
+        assertEquals(dorestiFontSize(),"20px");
+    }
+
+    @Story("“Dorești să ajuți alți oameni?” is center aligned.")
+    @Test
+    public void doresti_text_align(){
+        assertEquals(dorestiAlign(),"center");
     }
 
 }
