@@ -527,4 +527,5 @@ public class Landing {
     public String dorestiAlign() {
         return doresti().getCssValue("text-align");
     }
+
 }

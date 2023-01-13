@@ -671,7 +671,6 @@ public class LandingPageTest extends Landing {
     public void doresti_text_align(){
         assertEquals(dorestiAlign(),"center");
     }
-
 }
 
 
