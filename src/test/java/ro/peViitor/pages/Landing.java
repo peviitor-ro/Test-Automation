@@ -18,7 +18,7 @@ public class Landing {
 
     public WebDriver openBrowser() {
         WebDriverManager.chromedriver().setup();
-        System.setProperty("webdriver.chrome.driver", "c:\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         driver = new ChromeDriver(options);
