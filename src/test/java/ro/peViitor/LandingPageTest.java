@@ -4,7 +4,7 @@ import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import ro.peViitor.pages.Landing;
@@ -39,7 +39,7 @@ public class LandingPageTest extends Landing {
         driver.switchTo().window(browserTabs.get(0));
     }
 
-    @BeforeClass
+    @BeforeTest
     public void startUp() {
         driver = openBrowser();
         driver.get(HOMEPAGE);
