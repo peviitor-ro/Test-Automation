@@ -5,11 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
 
-import java.time.Duration;
-
+import static java.lang.Thread.sleep;
 import static org.testng.Assert.assertEquals;
 
 
@@ -118,6 +116,22 @@ public class Landing {
 
     public WebElement placeholder() {
         return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div/div[1]/input"));
+    }
+
+    public WebElement secondSearchBar() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div"));
+    }
+
+    public WebElement placeholderCountry() {
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div/div[2]/select"));
+    }
+
+    public WebElement locationIcon(){
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[2]/main/section[2]/div/div[2]/img"));
+    }
+
+    public WebElement blueBanner(){
+        return driver.findElement(By.xpath("/html/body/div/section/section/section[3]"));
     }
 
     public String joinFontStyle() {
@@ -422,7 +436,7 @@ public class Landing {
         return placeholder().getAttribute("placeholder");
     }
 
-    public String cedoritiFontStyle(){
+    public String cedoritiFontStyle() {
         return placeholder().getCssValue("font-style");
     }
 
@@ -430,8 +444,65 @@ public class Landing {
         return placeholder().getCssValue("font-size");
     }
 
-    public String magnifyingglassPosition(){
+    public String magnifyingGlassPosition() {
         return magnifyingGlass().getCssValue("position");
 
     }
+
+    public String ssd(String data) {
+        placeholder().sendKeys(data);
+        return data;
+    }
+
+    public String ceDoritiWeight() {
+        return placeholder().getCssValue("font-weight");
+    }
+
+    public String ceDoritiHexColor() {
+        return placeholder().getCssValue("border-top-color");
+    }
+
+    public String outerBorder() {
+        return secondSearchBar().getCssValue("border-width");
+    }
+
+    public String textHeightSecondSearchBar() {
+        return placeholderCountry().getCssValue("font-size");
+    }
+
+    public String textFontStyleSecondSearchBar() {
+        return placeholderCountry().getCssValue("font-style");
+    }
+
+    public String positionTextSecondSearchBar() {
+        return placeholderCountry().getCssValue("position");
+    }
+
+    public String defaultTextSecondSearchBar() {
+        return (placeholderCountry().getText());
+    }
+
+    public boolean isLocationIconVisible() {
+        return locationIcon().isDisplayed();
+    }
+
+    public String romaniaColor(){
+        return placeholderCountry().getCssValue("color");
+    }
+
+    public void select_between_options() throws InterruptedException {
+        Select select = new Select(placeholderCountry());
+        select.selectByVisibleText("Toate");
+        sleep(3000);
+        select.selectByVisibleText("România");
+
+    }
+
+    public String blueBannerColorCode(){
+        return blueBanner().getCssValue("background-color");
+
+    }
+
+
+
 }

@@ -3,19 +3,18 @@ package ro.peViitor;
 import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import ro.peViitor.pages.Landing;
-
 
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 
 public class LandingPageTest extends Landing {
@@ -45,10 +44,11 @@ public class LandingPageTest extends Landing {
         driver.get(HOMEPAGE);
     }
 
-    @AfterClass
-    public void cleanUp() {
-        driver.quit();
-    }
+//    @Ignore
+//    @AfterClass
+//    public void cleanUp() {
+//        driver.quit();
+//    }
 
     @Story("Page title: peviitor I motor de căutare locuri de muncă TC734")
     @Test
@@ -460,103 +460,189 @@ public class LandingPageTest extends Landing {
 
     @Story("Logo width.")
     @Test
-    public void logo_size(){
-        assertEquals(logoSize(),"(93, 28)");
+    public void logo_size() {
+        assertEquals(logoSize(), "(93, 28)");
     }
 
     @Story("The distance between the top border of header and the logo is 16px.")
     @Test
-    public void top_border_header(){
-        assertEquals(topBorderHeader(),"16px");
+    public void top_border_header() {
+        assertEquals(topBorderHeader(), "16px");
     }
 
     @Story("The distance between the left border of header and the logo is 20px.")
     @Test
-    public void left_border_header(){
-        assertEquals(leftBorderHeader(),"20px");
+    public void left_border_header() {
+        assertEquals(leftBorderHeader(), "20px");
     }
 
     @Story("The distance between the bottom border of header and the logo  is 16px.")
     @Test
-    public void bottom_border_header(){
-        assertEquals(bottomBorderHeader(),"16px");
+    public void bottom_border_header() {
+        assertEquals(bottomBorderHeader(), "16px");
     }
 
     @Story("The content in the border is \"Gaseste-ti jobul dorit acum\"")
     @Test
-    public void gaseste_ti_jobul_dorit_acum(){
+    public void gaseste_ti_jobul_dorit_acum() {
         assertTrue(isGasesteTiJobulDoritAcumVisible());
     }
 
     @Story("The font-family used for \"Gaseste-ti jobul dorit acum\" is Poppins")
     @Test
-    public void font_family_gasete_ti_jobul_dorit_acum(){
+    public void font_family_gasete_ti_jobul_dorit_acum() {
         assertTrue(fontFamilyGaseteTiJobulDoritAcum().contains("Poppins"));
     }
 
     @Story("The font-style for the text \"Gaseste-ti jobul dorit acum\" is normal")
     @Test
-    public void font_style_gasete_ti_jobul_dorit_acum(){
-        assertEquals(fontStyleGaseteTiJobulDoritAcum(),"normal");
+    public void font_style_gasete_ti_jobul_dorit_acum() {
+        assertEquals(fontStyleGaseteTiJobulDoritAcum(), "normal");
     }
 
     @Story("The size used for \"Gaseste-ti jobul dorit\" is 26px")
     @Test
-    public void size_gasete_ti_jobul_dorit_acum(){
-        assertEquals(sizeGaseteTiJobulDoritAcum(),"26px");
+    public void size_gasete_ti_jobul_dorit_acum() {
+        assertEquals(sizeGaseteTiJobulDoritAcum(), "26px");
     }
+
     @Story("The line height used for \"Gaseste-ti jobul dorit acum\" is 32px")
     @Test
-    public void height_gasete_ti_jobul_dorit_acum(){
-        assertEquals(lineHeightGaseteTiJobulDoritAcum(),"32px");
+    public void height_gasete_ti_jobul_dorit_acum() {
+        assertEquals(lineHeightGaseteTiJobulDoritAcum(), "32px");
     }
 
     @Story("The outer border of the first search bar is 1px.")
     @Test
-    public void outer_border_1st_Search_Bar(){
+    public void outer_border_1st_Search_Bar() {
         assertTrue(outerBorder1stSearchBar().contains("1px"));
     }
 
     @Story("In the first search bar we have a magnifying glass.")
     @Test
-    public void magnifying_glass(){
+    public void magnifying_glass() {
         assertTrue(magnifyingGlassIsVisible());
     }
 
     @Story("The magnifying glass is not clickable.")
     @Test
-    public void click_magnifying_glass(){
+    public void click_magnifying_glass() {
         assertTrue(clickMagnifyingGlass());
     }
 
     @Story("The position of the magnifying glass in the first search box is 'absolute'")
     @Test
-    public void position_magnifying_glass(){
-        assertEquals(positionMagnifyingGlass(),"absolute");
+    public void position_magnifying_glass() {
+        assertEquals(positionMagnifyingGlass(), "absolute");
     }
 
     @Story("The first search bar has the text 'Ce doriți să lucrați?' ")
     @Test
-    public void ce_doriti_sa_lucrati(){
-       assertEquals(ceDoritiSaLucrati(),"Ce doriți să lucrați?");
+    public void ce_doriti_sa_lucrati() {
+        assertEquals(ceDoritiSaLucrati(), "Ce doriți să lucrați?");
     }
 
     @Story("The text in the first search bar has the height of 16px.")
     @Test
-    public void font_size_searchbar(){
+    public void font_size_searchbar() {
         assertEquals(fontSizeSearch(), "16px");
     }
 
     @Story("The position of the magnifying glass in the first search box is 'absolute'")
     @Test
-    public void magnifying_glass_position(){
-        assertEquals(magnifyingglassPosition(),"absolute");
+    public void magnifying_glass_position() {
+        assertEquals(magnifyingGlassPosition(), "absolute");
     }
 
     @Story("'Ce doriți să lucrați?' has the font-style normal.")
     @Test
-    public void magnifying_glass_fontStyle(){
+    public void ce_doriti_fontStyle() {
         assertEquals(cedoritiFontStyle(), "normal");
     }
+
+    @Story("You can type any job in the first search box.")
+    @Test
+    public void search_Input() {
+        assertEquals(ssd(""), "");
+    }
+
+    @Story("The weight of the text 'Ce doriți să lucrați?'")
+    @Test
+    public void ce_doriti_weight() {
+        assertEquals(ceDoritiWeight(), "400");
+    }
+
+    @Ignore
+    @Story("Check the color of the text in the first search bar.")
+    @Test
+    public void ce_doriti_color() {
+        assertEquals(ceDoritiHexColor(), "rgba(151, 156, 158, 1)");
+    }
+
+    @Story("The width of the outer border of the second search bar")
+    @Test
+    public void outer_border_width() {
+        assertEquals(outerBorder(), "1px");
+    }
+
+    @Story("The text height in the second search box is 16px.")
+    @Test
+    public void font_size_second_search_bar() {
+        assertEquals(textHeightSecondSearchBar(), "16px");
+    }
+
+    @Story("The font-style of the text in the second search box")
+    @Test
+    public void font_style_second_search_bar() {
+        assertEquals(textFontStyleSecondSearchBar(), "normal");
+    }
+
+    @Ignore
+    @Story("The position of the text 'România' in the second search box ")
+    @Test
+    public void position_text_second_search_bar() {
+        assertEquals(positionTextSecondSearchBar(), "absolute");
+    }
+
+    @Story("In the second search bar we have the text 'România' by default")
+    @Test
+    public void default_text_second_search_bar() {
+        assertTrue(defaultTextSecondSearchBar().contains("România"));
+    }
+
+    @Story("The icon in the second search bar is present.")
+    @Test
+    public void location_icon_is_visible(){
+        assertTrue(isLocationIconVisible());
+    }
+
+    @Ignore
+    @Story("'România' has the hex color #090A0A")
+    @Test
+    public void romania_color(){
+        assertEquals(romaniaColor(),"rgba(9, 10, 10, 1)");
+    }
+
+    @Story("You can select \"Toate\" or \"România\" on the dropdown by clicking on 'R")
+    @Test
+    public void select_Toate_Romania() throws InterruptedException {
+        select_between_options();
+    }
+
+    @Story("Check the color of the section above the footer.")
+    @Test
+    public void blue_banner(){
+        assertEquals(blueBannerColorCode(),"rgba(3, 34, 57, 1)");
+    }
+
 }
+
+
+
+
+
+
+
+
+
 
