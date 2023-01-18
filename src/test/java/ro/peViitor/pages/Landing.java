@@ -8,6 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Thread.sleep;
 import static org.testng.Assert.assertEquals;
 
@@ -16,13 +19,33 @@ public class Landing {
 
     public WebDriver driver;
 
+    public static final String CONDITII = "https://legal.peviitor.ro/";
+    public static final String ONG = "https://www.oportunitatisicariere.ro/";
+    public static final String LINKEDIN = "https://www.linkedin.com/company/asociatia-oportunitati-si-cariere/?original_referer=";
+    public static final String SERP = "https://beta.peviitor.ro/rezultate?country=Rom%C3%A2nia&page=1";
+    public static final String HOMEPAGE = "https://beta.peviitor.ro/";
+    public static final String VOLUNTARI = "https://www.oportunitatisicariere.ro/voluntari";
+    public static final String FACEBOOK = "https://www.facebook.com/people/Asociatia-oportunitati-si-cariere/100088634384252/";
+    public static final String INSTAGRAM = "https://www.instagram.com/peviitor/";
+    public static final String PRIVACY = "https://legal.peviitor.ro/confidentialitate";
+
+
+
     public WebDriver openBrowser() {
         WebDriverManager.chromedriver().setup();
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         return driver;
+    }
+
+    public static void verify(WebDriver driver, String PAGE) {
+        List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(browserTabs.get(1));
+        assertEquals(driver.getCurrentUrl(), PAGE);
+        driver.close();
+        driver.switchTo().window(browserTabs.get(0));
     }
 
     public WebElement politica() {
@@ -92,7 +115,7 @@ public class Landing {
     }
 
     public WebElement logo() {
-        return driver.findElement(By.xpath("/html/body/div/section/section/section[1]/a[1]/img"));
+        return driver.findElement(By.xpath("//img[@alt ='pe viitor logo']"));
     }
 
     public WebElement sectionTopBarBorder() {
