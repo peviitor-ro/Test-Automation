@@ -31,12 +31,12 @@ jobs:
       with:
         java-version: 11
 
-    - name: Install dependencies
+    - name: Setup ChromeDriver
       run: |
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
-        sudo apt-get install -y chromium-chromedriver
-
+        wget https://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_linux64.zip
+        unzip chromedriver_linux64.zip
+        export PATH=$PATH:$PWD
+        
     - name: Build with Maven
       run:  mvn test -Dheadless
 
