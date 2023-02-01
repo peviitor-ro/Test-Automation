@@ -38,6 +38,7 @@ jobs:
         export PATH=$PATH:$PWD
         ls
         pwd
+        ls $GITHUB_WORKSPACE
         
         
     - name: Build with Maven
