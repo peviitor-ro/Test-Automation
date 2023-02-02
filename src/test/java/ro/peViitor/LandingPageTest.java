@@ -11,8 +11,6 @@ import ro.peViitor.pages.Landing;
 
 import java.io.IOException;
 import java.text.Normalizer;
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.lang.Thread.sleep;
 import static org.testng.Assert.assertEquals;
@@ -104,13 +102,6 @@ public class LandingPageTest extends Landing {
         assertEquals(joinCharacters(), "Alătură-te");
     }
 
-    @Ignore
-    @Story("Tapping on \"Instagram\" button TC182 ")
-    @Test
-    public void instagram_tap() {
-        instagramRedirect();
-        verify(driver, INSTAGRAM);
-    }
 
     private void instagramRedirect() {
         instagramLogo();
@@ -236,12 +227,6 @@ public class LandingPageTest extends Landing {
         Normalizer.isNormalized(s, Normalizer.Form.NFD);
     }
 
-    @Ignore
-    @Story("The font-family used for the text \"Avem X  de oportunitati in acest moment in Romania\" is SF Pro")
-    @Test
-    public void avem_family_font() {
-        assertEquals(avemFontFamily(), "SF Pro");
-    }
 
     @Story("The weight used for the text \"Avem X de oportunitati in acest moment in Romania\" is 400")
     @Test
@@ -255,19 +240,6 @@ public class LandingPageTest extends Landing {
         assertEquals(avemFontSize(), "16px");
     }
 
-    @Ignore
-    @Story("The line height used for the text \"Avem X de oportunitati in acest moment in Romania\" is 19.09px")
-    @Test
-    public void avem_line_height() {
-        assertEquals(avemLineHeight(), "19.09px");
-    }
-
-    @Ignore
-    @Story("The color used for the text \"Avem X de oportunitati in acest moment in Romania\" is Ink black #090A0A")
-    @Test
-    public void avem_color() {
-        assertEquals(avemColor(), "rgba(9, 10, 10, 1)");
-    }
 
     @Story("The font-style used for the text \"Avem X  de oportunitati in acest moment in Romania\" is normal")
     @Test
@@ -387,19 +359,6 @@ public class LandingPageTest extends Landing {
         assertEquals(allFontColor(), "rgba(111, 119, 122, 1)");
     }
 
-    @Ignore
-    @Story("Footer logo height ")
-    @Test
-    public void f_logo_height() {
-        assertEquals(flogoHeight(), "38px");
-    }
-
-    @Ignore
-    @Story("Footer logo width")
-    @Test
-    public void f_logo_width() {
-        assertEquals(fLogoWidth(), "127px");
-    }
 
     @Story("Line height between footer section between \"Alătură-te cauzei noastre\" and \"Informații suplimentare\"")
     @Test
@@ -599,16 +558,10 @@ public class LandingPageTest extends Landing {
 
     @Story("The icon in the second search bar is present.")
     @Test
-    public void location_icon_is_visible(){
+    public void location_icon_is_visible() {
         assertTrue(isLocationIconVisible());
     }
 
-    @Ignore
-    @Story("'România' has the hex color #090A0A")
-    @Test
-    public void romania_color(){
-        assertEquals(romaniaColor(),"rgba(9, 10, 10, 1)");
-    }
 
     @Story("You can select \"Toate\" or \"România\" on the dropdown by clicking on 'R")
     @Test
@@ -618,44 +571,44 @@ public class LandingPageTest extends Landing {
 
     @Story("Check the color of the section above the footer.")
     @Test
-    public void blue_banner(){
-        assertEquals(blueBannerColorCode(),"rgba(3, 34, 57, 1)");
+    public void blue_banner() {
+        assertEquals(blueBannerColorCode(), "rgba(3, 34, 57, 1)");
     }
 
     @Story("Inside the blue section we have the text box \"Dorești să ajuți alți oameni?\"")
     @Test
-    public void doresti_visible(){
+    public void doresti_visible() {
         assertTrue(doresti().isDisplayed());
     }
 
     @Story("\"Dorești să ajuți alți oameni?\" font color is white(#FFFFFF).")
     @Test
-    public void doresti_color(){
-        assertEquals(dorestiColor(),"rgba(255, 255, 255, 1)");
+    public void doresti_color() {
+        assertEquals(dorestiColor(), "rgba(255, 255, 255, 1)");
     }
 
     @Story("\"Dorești să ajuți alți oameni?\" font family is Poppins.")
     @Test
-    public void doresti_font_family(){
+    public void doresti_font_family() {
         assertTrue(dorestiFont().startsWith("Poppins"));
     }
 
     @Story("“Dorești să ajuți alți oameni?” font style is normal.")
     @Test
-    public void doresti_font_style(){
-        assertEquals(dorestiFontStyle(),"normal");
+    public void doresti_font_style() {
+        assertEquals(dorestiFontStyle(), "normal");
     }
 
     @Story("“Dorești să ajuți alți oameni?” font size is 20px.")
     @Test
-    public void doresti_font_size(){
-        assertEquals(dorestiFontSize(),"20px");
+    public void doresti_font_size() {
+        assertEquals(dorestiFontSize(), "20px");
     }
 
     @Story("“Dorești să ajuți alți oameni?” is center aligned.")
     @Test
-    public void doresti_text_align(){
-        assertEquals(dorestiAlign(),"center");
+    public void doresti_text_align() {
+        assertEquals(dorestiAlign(), "center");
     }
 }
 

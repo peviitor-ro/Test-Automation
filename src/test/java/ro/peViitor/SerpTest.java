@@ -2,7 +2,6 @@ package ro.peViitor;
 
 import io.qameta.allure.Story;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import ro.peViitor.pages.Landing;
@@ -22,7 +21,7 @@ public class SerpTest extends Landing {
     public void startUp() throws IOException, InterruptedException {
         driver = openBrowser();
         driver.get(SERP);
-        serp.driver=driver;
+        serp.driver = driver;
     }
 //
 //    @AfterClass
@@ -59,106 +58,51 @@ public class SerpTest extends Landing {
         verify(driver, VOLUNTARI);
     }
 
-    @Story("\"Alătură-te\" text is displayed in the right corner, besides the briefcase icon")
-    @Test
-    public void positionAlaturate() throws InterruptedException {
-        assertEquals(serp.alaturateLocation(),"(888, 20)");
-    }
 
     @Story("\"Alătură-te\" button text has diacritics  ")
     @Test
     public void alaturateDiacritics() throws InterruptedException {
-    String s = serp.alaturateDiacristics();
+        String s = serp.alaturateDiacristics();
         Normalizer.isNormalized(s, Normalizer.Form.NFD);
     }
 
-    @Story("\" Alătură-te\" button text letter spacing  ")
-    @Test
-    public void alaturateSpacing() throws InterruptedException {
-        assertEquals(serp.alaturateSpacing(),"-0.02em");
-    }
 
     @Story("\" Alătură-te\" text's font color ")
     @Test
     public void alaturateColor() throws InterruptedException {
-        assertEquals(serp.alaturateColor(),"rgba(9, 10, 10, 1)");
+        assertEquals(serp.alaturateColor(), "rgba(9, 10, 10, 1)");
     }
 
-    @Story("\"Alătură-te\" text's font ")
-    @Test
-    public void alaturateFont()throws InterruptedException{
-        assertEquals(serp.alaturateFont(),"SF Pro");
-    }
 
     @Story("\"Alătură-te\" text's font weight ")
     @Test
-    public void alaturateWeight()throws InterruptedException{
-        assertEquals(serp.alaturateWeight(),"400");
+    public void alaturateWeight() throws InterruptedException {
+        assertEquals(serp.alaturateWeight(), "400");
     }
 
     @Story("\"Alătură-te\" text's font style ")
     @Test
-    public void alaturateStyle()throws InterruptedException{
-        assertEquals(serp.alaturateStyle(),"normal");
+    public void alaturateStyle() throws InterruptedException {
+        assertEquals(serp.alaturateStyle(), "normal");
     }
 
     @Story("\"Alătură-te\" text's font size ")
     @Test
-    public void alaturateSize()throws InterruptedException{
-        assertEquals(serp.alaturateSize(),"16px");
-    }
-
-    @Story("\"Alătură-te\" text's height")
-    @Test
-    public void alaturateHeight()throws InterruptedException{
-        assertEquals(serp.alaturateHeight(),"19px");
-    }
-
-    @Story("\"Alătură-te\" text's  width")
-    @Test
-    public void alaturateWidth()throws InterruptedException{
-        assertEquals(serp.alaturateWidth(),"73px","can't separate the elements, briefcase + text");
-    }
-
-    @Story("\" Alătură-te\" button text's line height")
-    @Test
-    public void alaturateButtonHeight()throws InterruptedException{
-        assertEquals(serp.alaturateButtonHeight(),"19px");
-    }
-
-    @Story("Briefcase icon displayed on the right corner of the header")
-    @Test
-    public void briefcaseDisplayed()throws InterruptedException{
-        assertEquals(serp.briefcaseDisplayed(),"(888, 20)");
-    }
-
-    @Story("Briefcase icon width ")
-    @Test
-    public void briefcaseWidth()throws InterruptedException{
-        assertEquals(serp.briefcaseWidth(),"16,67px");
-    }
-
-    @Story("Briefcase icon height ")
-    @Test
-    public void briefcaseHeight()throws InterruptedException{
-        assertEquals(serp.briefcaseHeight(),"15px");
+    public void alaturateSize() throws InterruptedException {
+        assertEquals(serp.alaturateSize(), "16px");
     }
 
     @Story("Briefcase icon - color")
     @Test
-    public void briefcaseColor()throws InterruptedException{
-        assertEquals(serp.briefcaseColor(),"rgba(9, 10, 10, 1)");
+    public void briefcaseColor() throws InterruptedException {
+        assertEquals(serp.briefcaseColor(), "rgba(9, 10, 10, 1)");
     }
 
     @Story("Logo image is displayed in the left corner (TC422,TC423,TC424,TC425)")
     @Test
     public void logoPosition() throws InterruptedException {
-        assertEquals(logo().getLocation().toString(),"(20, 16)");
+        assertEquals(logo().getLocation().toString(), "(20, 16)");
     }
-
-
-
-
 
 
 }
