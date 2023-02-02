@@ -60,7 +60,7 @@ public class Landing {
                 System.setProperty("webdriver.edge.driver", "C:\\msedgedriver.exe");
                 driver = new EdgeDriver();
                 break;
-            case "ubuntu":
+            case "ubuntu-latest":
                 System.setProperty("webdriver.edge.driver", "/home/runner/work/Test-Automation/Test-Automation/src/chromedriver");
                 driver = new ChromeDriver();
                 break;
