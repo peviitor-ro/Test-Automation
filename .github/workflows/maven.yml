@@ -36,15 +36,10 @@ jobs:
         wget https://chromedriver.storage.googleapis.com/109.0.5414.74/chromedriver_linux64.zip
         unzip chromedriver_linux64.zip
         export PATH=$PATH:$PWD
-        ls
-        pwd
-        ls $GITHUB_WORKSPACE
+       
         
         
     - name: Build with Maven
       run:  mvn test -Dheadless
 
-    - name: Run Selenium tests
-      run: |
-        export PATH=$PATH:/usr/lib/chromium-browser/
-        mvn test -Dheadless
+    
