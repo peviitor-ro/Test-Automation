@@ -9,6 +9,7 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import ro.peViitor.pages.Landing;
 
+import java.io.IOException;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class LandingPageTest extends Landing {
 
 
     @BeforeTest
-    public void startUp() {
+    public void startUp() throws IOException, InterruptedException {
         driver = openBrowser();
         driver.get(HOMEPAGE);
     }

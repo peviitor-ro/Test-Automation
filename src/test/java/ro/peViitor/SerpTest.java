@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import ro.peViitor.pages.Landing;
 import ro.peViitor.pages.Serp;
 
+import java.io.IOException;
 import java.text.Normalizer;
 
 import static org.testng.Assert.assertEquals;
@@ -18,7 +19,7 @@ public class SerpTest extends Landing {
     Serp serp = new Serp();
 
     @BeforeTest
-    public void startUp() {
+    public void startUp() throws IOException, InterruptedException {
         driver = openBrowser();
         driver.get(SERP);
         serp.driver=driver;

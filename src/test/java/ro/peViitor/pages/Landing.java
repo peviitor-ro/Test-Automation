@@ -6,10 +6,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import static java.lang.Thread.sleep;
 import static org.testng.Assert.assertEquals;
@@ -30,13 +36,38 @@ public class Landing {
     public static final String PRIVACY = "https://legal.peviitor.ro/confidentialitate";
 
 
+    public WebDriver openBrowser() throws IOException, InterruptedException {
 
-    public WebDriver openBrowser() {
-        WebDriverManager.chromedriver().setup();
-        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
-        driver = new ChromeDriver();
+        Properties prop = new Properties();
+        FileInputStream file = new FileInputStream("C:\\Test-Automation\\src\\test\\java\\ro\\peViitor\\pages\\data.properties");
+        prop.load(file);
+        String browserName = prop.getProperty("browser");
+
+        switch (browserName) {
+            case "chrome":
+                System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+                WebDriverManager.chromedriver().setup();
+                System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("headless");
+                driver = new ChromeDriver(options);
+                break;
+            case "firefox":
+                System.setProperty("webdriver.firefox.driver", "C:\\geckodriver.exe");
+                driver = new FirefoxDriver();
+                break;
+            case "edge":
+                System.setProperty("webdriver.edge.driver", "C:\\msedgedriver.exe");
+                driver = new EdgeDriver();
+                break;
+            case "ubuntu":
+                System.setProperty("webdriver.edge.driver", "/home/runner/work/Test-Automation/Test-Automation/src/chromedriver");
+                driver = new ChromeDriver();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + browserName);
+        }
+        sleep(1000);
         return driver;
     }
 
