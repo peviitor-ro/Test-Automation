@@ -39,7 +39,7 @@ public class Landing {
     public WebDriver openBrowser() throws IOException, InterruptedException {
 
         Properties prop = new Properties();
-        FileInputStream file = new FileInputStream("C:\\Test-Automation\\src\\test\\java\\ro\\peViitor\\pages\\data.properties");
+        FileInputStream file = new FileInputStream("$ projectRoot\\src\\test\\java\\ro\\peViitor\\pages\\data.properties");
         prop.load(file);
         String browserName = prop.getProperty("browser");
 
