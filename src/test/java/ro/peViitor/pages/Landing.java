@@ -62,7 +62,9 @@ public class Landing {
                 break;
             case "ubuntu-latest":
                 System.setProperty("webdriver.edge.driver", "/home/runner/work/Test-Automation/Test-Automation/src/chromedriver");
-                driver = new ChromeDriver();
+                options = new ChromeOptions();
+                options.addArguments("headless");
+                driver = new ChromeDriver(options);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + browserName);
