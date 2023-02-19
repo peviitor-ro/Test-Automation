@@ -49,5 +49,5 @@ jobs:
     - name: Step 6 - Use the Upload Artifact GitHub Action
       uses: actions/upload-artifact@v3.1.2
       with: 
-        name: assets-for-download
+        name: cucumber-test-report-artifact
         path: D:\a\Test-Automation\Test-Automation\target\cucumber-reports\CucumberTests.html
