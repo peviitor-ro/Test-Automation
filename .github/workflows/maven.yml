@@ -36,7 +36,7 @@ jobs:
       run: mvn clean install
 
     - name: Run TestNG tests
-      run: mvn test -Dtest=TestNGTestSuite -DfailIfNoTests=false
+      run: mvn test 
       
     - name: Step 3 - Use the Upload Artifact GitHub Action
       uses: actions/upload-artifact@v2
