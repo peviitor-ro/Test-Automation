@@ -50,4 +50,4 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with: 
         name: assets-for-download
-        path: CucumberTests.html
+        path: D:\a\Test-Automation\Test-Automation\target\cucumber-reports\CucumberTests.html
