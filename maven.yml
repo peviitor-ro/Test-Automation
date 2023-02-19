@@ -23,23 +23,32 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout code
+    - name: Step 1 - Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Java
+    - name: Step 2 - Set up Java
       uses: actions/setup-java@v3
       with:
        distribution: 'zulu'
        java-version: '11'
         
-    - name: Build with Maven
-      run: mvn clean install
+    - name: Step 3 - Build with Maven
+      run: |
+       mvn -B package --file pom.xml
+       mkdir staging && cp target/*.jar staging
+       
+    - name: Step 4 - Set up a cache for Maven
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2  
 
-    - name: Run TestNG tests
-      run: mvn test 
+    - name: Step 5 - Run TestNG tests
+      run: mvn clean test 
       
-    - name: Step 3 - Use the Upload Artifact GitHub Action
+    - name: Step 6 - Use the Upload Artifact GitHub Action
       uses: actions/upload-artifact@v3.1.2
       with: 
         name: assets-for-download
-        path: surefire-reports
+        path: staging
