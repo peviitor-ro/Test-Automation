@@ -39,7 +39,7 @@ jobs:
       run: mvn test 
       
     - name: Step 3 - Use the Upload Artifact GitHub Action
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3.1.2
       with: 
         name: assets-for-download
-        path: ./cucumber-reports
+        path: CucumberTests.html
