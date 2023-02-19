@@ -37,3 +37,9 @@ jobs:
 
     - name: Run TestNG tests
       run: mvn test -Dtest=TestNGTestSuite -DfailIfNoTests=false
+      
+    - name: Step 3 - Use the Upload Artifact GitHub Action
+      uses: actions/upload-artifact@v2
+      with: 
+        name: assets-for-download
+        path: cucumber-reports
