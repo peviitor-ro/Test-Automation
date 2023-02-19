@@ -1,0 +1,4 @@
+ro\peviitor\hooks\ScreenshotHook.class
+ro\peviitor\runners\TestRunner.class
+ro\peviitor\hooks\WebDriverHook.class
+ro\peviitor\steps\HomePageSteps.class

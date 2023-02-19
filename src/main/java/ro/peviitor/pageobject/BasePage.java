@@ -14,14 +14,17 @@ import java.time.Duration;
 import static ro.peviitor.utils.TypesOfData.*;
 
 
-public class BasePage
+public abstract class BasePage
 {
     protected WebDriver webDriver;
 
-    protected BasePage(WebDriver webDriver)
+    protected final WebDriverWait wait;
+
+    protected BasePage()
     {
-        webDriver = DriverManager.getDriver();
-        PageFactory.initElements(webDriver, this);
+        this.webDriver = DriverManager.getDriver();
+        this.wait = new WebDriverWait(webDriver, Duration.ofSeconds(20));
+        PageFactory.initElements(new AjaxElementLocatorFactory(webDriver, 20), this);
     }
 
     protected WebElement getElementBy(String byType, String path, int time)

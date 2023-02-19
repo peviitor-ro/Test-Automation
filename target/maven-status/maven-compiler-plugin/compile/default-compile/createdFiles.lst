@@ -1,0 +1,7 @@
+ro\peviitor\pageobject\BasePage.class
+ro\peviitor\pageobject\pages\SerpPage.class
+ro\peviitor\utils\ConfigUtil.class
+ro\peviitor\utils\TypesOfData.class
+ro\peviitor\pageobject\pages\HomePage.class
+ro\peviitor\drivermanager\DriverManager.class
+ro\peviitor\utils\ScenarioContext.class
