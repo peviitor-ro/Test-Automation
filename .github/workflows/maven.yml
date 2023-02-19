@@ -42,4 +42,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with: 
         name: assets-for-download
-        path: cucumber-reports
+        path: ./cucumber-reports
