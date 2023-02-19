@@ -15,8 +15,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  MAVEN_OPTS: "-Dmaven.repo.local=$MAVEN_USER_HOME/repository"
+# env:
+#   MAVEN_OPTS: "-Dmaven.repo.local=$MAVEN_USER_HOME/repository"
 
 jobs:
   build:
