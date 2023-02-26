@@ -37,6 +37,7 @@ jobs:
        mkdir staging && cp target/*.jar staging
        
     - name: Step 4 - Set up a cache for Maven
+      if: always()
       uses: actions/cache@v3
       with:
         path: ~/.m2
@@ -44,9 +45,11 @@ jobs:
         restore-keys: ${{ runner.os }}-m2  
 
     - name: Step 5 - Run TestNG tests
+      if: always()
       run: mvn clean test 
       
     - name: Step 6 - Use the Upload Artifact GitHub Action
+      if: always()
       uses: actions/upload-artifact@v3.1.2
       with: 
         name: cucumber-test-report-artifact
