@@ -17,56 +17,35 @@ public class DriverManager
 {
     private static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     private static final Duration PAGE_LOAD_TIMEOUT = Duration.ofSeconds(30);
-    private static final String HEADLESS = "headless";
-    private static final String WINDOW_SIZE = "--window-size=1920,1080";
+    private static String[] driverOptions = {};
 
     public static void setupDriver()
     {
-        WebDriver webDriver = createBrowser();
+        setDriverOptions();
+        WebDriver webDriver = createDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT);
         webDriverThreadLocal.set(webDriver);
     }
+    private static void setDriverOptions() {
+        if (ConfigUtil.getTestMode().equals("true")) {
+            driverOptions = ConfigUtil.getDriverOptions().split("\\s+");
+        }
+    }
 
-    private static WebDriver createBrowser()
-    {
-        switch (ConfigUtil.getBrowser())
-        {
-            case "chrome":
-            {
+    private static WebDriver createDriver() {
+        switch (ConfigUtil.getBrowser()) {
+            case "chrome": {
                 WebDriverManager.chromedriver().setup();
-                if (ConfigUtil.getTestMode().equals("true"))
-                {
-                    ChromeOptions options = new ChromeOptions()
-                            .addArguments(HEADLESS)
-                            .addArguments(WINDOW_SIZE);
-                    return new ChromeDriver(options);
-                }
-                return new ChromeDriver();
+                return new ChromeDriver(new ChromeOptions().addArguments(driverOptions));
             }
-            case "edge":
-            {
+            case "edge": {
                 WebDriverManager.edgedriver().setup();
-                if (ConfigUtil.getTestMode().equals("true"))
-                {
-                    EdgeOptions options = new EdgeOptions()
-                            .addArguments(HEADLESS)
-                            .addArguments(WINDOW_SIZE);
-                    return new EdgeDriver(options);
-                }
-                return new EdgeDriver();
+                return new EdgeDriver(new EdgeOptions().addArguments(driverOptions));
             }
-            case "firefox":
-            {
+            case "firefox": {
                 WebDriverManager.firefoxdriver().setup();
-                if (ConfigUtil.getTestMode().equals("true"))
-                {
-                    FirefoxOptions options = new FirefoxOptions()
-                            .addArguments(HEADLESS)
-                            .addArguments(WINDOW_SIZE);
-                    return new FirefoxDriver(options);
-                }
-                return new FirefoxDriver();
+                return new FirefoxDriver(new FirefoxOptions().addArguments(driverOptions));
             }
             default:
                 throw new IllegalArgumentException("No appropriate driver was specified");

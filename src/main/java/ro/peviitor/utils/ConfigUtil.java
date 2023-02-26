@@ -24,11 +24,12 @@ public class ConfigUtil
         return props;
     }
 
-    private static String getEnvironment()
+    public static String getDriverOptions()
     {
-        String environment = properties.getProperty("environment");
-        if (environment == null) throw new IllegalArgumentException("environment not specified in config.properties");
-        return environment;
+        String options = properties.getProperty("browser.options");
+        if (options == null)
+            throw new IllegalArgumentException("browser properties not specified in config.properties");
+        return options;
     }
 
     public static String getBrowser()

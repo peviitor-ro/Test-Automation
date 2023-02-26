@@ -19,4 +19,5 @@ public class HomePage extends BasePage
     {
         return pageTitle.getText();
     }
+
 }

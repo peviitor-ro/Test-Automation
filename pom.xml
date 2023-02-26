@@ -17,7 +17,6 @@
         <testng.version>7.7.0</testng.version>
         <webdrivermanager.version>5.3.1</webdrivermanager.version>
         <cucumber.version>7.8.0</cucumber.version>
-        <allure.version>2.20.0</allure.version>
     </properties>
 
     <dependencies>
@@ -47,34 +46,14 @@
             <artifactId>cucumber-testng</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-cucumber7-jvm</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                <version>2.19.1</version>-->
-<!--                <configuration>-->
-<!--                    <testFailureIgnore>true</testFailureIgnore>-->
-<!--                    <systemPropertyVariables>-->
-<!--                        <allure.results.directory>target/allure-results</allure.results.directory>-->
-<!--                    </systemPropertyVariables>-->
-<!--                    <suiteXmlFiles>-->
-<!--                        <suiteXmlFile>testng.xml</suiteXmlFile>-->
-<!--                    </suiteXmlFiles>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
             <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.12.0</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
             </plugin>
         </plugins>
     </build>
