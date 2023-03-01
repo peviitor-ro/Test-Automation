@@ -7,17 +7,13 @@ import ro.peviitor.utils.TypesOfData;
 
 public class HomePage extends BasePage
 {
-    @FindBy(xpath = "//h1")
-    protected WebElement pageTitle;
+    @FindBy(className = "all-rights-reserved")
+    protected WebElement copyrightFooterText;
 
     public void open()
     {
         webDriver.get(TypesOfData.HOMEPAGE);
     }
 
-    public String getPageTitle()
-    {
-        return pageTitle.getText();
-    }
 
 }
