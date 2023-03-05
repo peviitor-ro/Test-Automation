@@ -10,6 +10,7 @@ public class HomePage extends BasePage
     @FindBy(xpath = "//h1")
     protected WebElement pageTitle;
 
+
     public void open()
     {
         webDriver.get(TypesOfData.HOMEPAGE);
