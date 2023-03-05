@@ -29,7 +29,7 @@ public class HomePageSteps
     @Then("the section is spelled as {string}")
     public void theSectionIsSpelledAs(String orgName)
     {
-        assertEquals(footerModule.organizationText(), orgName, "The Organizație section is not spelled correctly");
+        assertEquals(footerModule.firstFooterSectionText(), orgName, "The Organizație section is not spelled correctly");
     }
 
     @Then("the first link text under Organizatie is {string}")
@@ -68,5 +68,18 @@ public class HomePageSteps
     public void onSecondClickTheLinkOpensInANewTab()
     {
         assertTrue(footerModule.doesJoinUsLinkOpenInANewTab(), "The link does not open in a new tab");
+    }
+
+    @Then("the second section is spelled as {string}")
+    public void theSecondSectionIsSpelledAs(String secondSection)
+    {
+        assertEquals(footerModule.secondFooterSectionText(), secondSection, "The Informatii Suplimentare section is " +
+                "not spelled correctly");
+    }
+
+    @Then("the first link text under Informatii Suplimentare is {string}")
+    public void theFirstLinkTextUnderInformatiiSuplimentareIs(String firstElementText)
+    {
+        assertEquals(footerModule.termsAndConditionsText(), firstElementText, "....");
     }
 }
