@@ -47,7 +47,7 @@ public class HomePageSteps
     @And("on click the link opens in a new tab")
     public void onClickTheLinkOpensInANewTab()
     {
-        assertTrue(footerModule.doesLinkOpenInANewTab(), "The link does not open in a new tab");
+        assertTrue(footerModule.doesAboutUsLinkOpenInANewTab(), "The link does not open in a new tab");
     }
 
     @Then("the second link text under Organizatie is {string}")
@@ -62,5 +62,11 @@ public class HomePageSteps
     {
         assertEquals(footerModule.joinUsLink(), secondLink, "The second link is not correct");
 
+    }
+
+    @And("on second click the link opens in a new tab")
+    public void onSecondClickTheLinkOpensInANewTab()
+    {
+        assertTrue(footerModule.doesJoinUsLinkOpenInANewTab(), "The link does not open in a new tab");
     }
 }

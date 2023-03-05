@@ -37,10 +37,19 @@ public class FooterModule extends BasePage
         return joinUs.getAttribute("href");
     }
 
-    public boolean doesLinkOpenInANewTab()
+    public boolean doesAboutUsLinkOpenInANewTab()
     {
         String originalUrl = webDriver.getCurrentUrl();
         aboutUs.click();
+        webDriver.getWindowHandles().forEach(tab ->webDriver.switchTo().window(tab));
+        String newUrl = webDriver.getCurrentUrl();
+        return (!originalUrl.equals(newUrl));
+    }
+
+    public boolean doesJoinUsLinkOpenInANewTab()
+    {
+        String originalUrl = webDriver.getCurrentUrl();
+        joinUs.click();
         webDriver.getWindowHandles().forEach(tab ->webDriver.switchTo().window(tab));
         String newUrl = webDriver.getCurrentUrl();
         return (!originalUrl.equals(newUrl));
