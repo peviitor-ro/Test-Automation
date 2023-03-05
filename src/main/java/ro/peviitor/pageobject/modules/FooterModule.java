@@ -45,7 +45,4 @@ public class FooterModule extends BasePage
         String newUrl = webDriver.getCurrentUrl();
         return (!originalUrl.equals(newUrl));
     }
-
-
-
 }
