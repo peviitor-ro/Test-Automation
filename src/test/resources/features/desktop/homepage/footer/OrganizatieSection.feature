@@ -5,7 +5,7 @@ Feature: Organizatie section of the footer and links under it
     Given User is on the homepage
   @Organizatie
   Scenario: Spelling of the word Organizație
-    Then the section is spelled as "Organizație"
+    Then the first section is spelled as "Organizație"
   @Organizatie
   Scenario: "Despre noi" spelling and redirect on click
     Then the first link text under Organizatie is "Despre noi"
