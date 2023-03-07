@@ -17,6 +17,14 @@ public class FooterModule extends BasePage {
     protected WebElement termsAndConditions;
     @FindBy(xpath = "//a[@href='https://legal.peviitor.ro/confidentialitate']")
     protected WebElement confidentialityPolicy;
+    @FindBy(xpath = "//section[@class='all-rights-reserved']")
+    protected WebElement copyright;
+    @FindBy(xpath = "//section[@class='social-media']/h3")
+    protected WebElement socialMedia;
+    @FindBy(xpath = "//section[@class='social-media']//a[contains(@href,'linkedin')]")
+    protected WebElement linkedIn;
+    @FindBy(xpath = "//section[@class='social-media'] //a[contains(@href,'discord')]")
+    protected WebElement discord;
 
 
     public String organizationText() {
@@ -59,6 +67,23 @@ public class FooterModule extends BasePage {
         return confidentialityPolicy.getText();
     }
 
+    public String copyrightText() {
+        return copyright.getText();
+    }
+
+    public String socialMediaText() {
+        return socialMedia.getText();
+    }
+
+    public String linkedInLInk() {
+        return linkedIn.getAttribute("href");
+    }
+
+    public String discordText() {
+        return discord.getAttribute("href");
+
+    }
+
     public boolean doesAboutUsLinkOpenInANewTab() {
         String originalUrl = webDriver.getCurrentUrl();
         aboutUs.click();
@@ -70,6 +95,30 @@ public class FooterModule extends BasePage {
     public boolean doesJoinUsLinkOpenInANewTab() {
         String originalUrl = webDriver.getCurrentUrl();
         joinUs.click();
+        webDriver.getWindowHandles().forEach(tab -> webDriver.switchTo().window(tab));
+        String newUrl = webDriver.getCurrentUrl();
+        return (!originalUrl.equals(newUrl));
+    }
+
+    public boolean doesClickingOnCopyrightOpenNewTab() {
+        String originalUrl = webDriver.getCurrentUrl();
+        copyright.click();
+        webDriver.getWindowHandles().forEach(tab -> webDriver.switchTo().window(tab));
+        String newUrl = webDriver.getCurrentUrl();
+        return (!originalUrl.equals(newUrl));
+    }
+
+    public boolean doesClickOnFirstSocialMediaOpenNewTab() {
+        String originalUrl = webDriver.getCurrentUrl();
+        linkedIn.click();
+        webDriver.getWindowHandles().forEach(tab -> webDriver.switchTo().window(tab));
+        String newUrl = webDriver.getCurrentUrl();
+        return (!originalUrl.equals(newUrl));
+    }
+
+    public boolean doesClickOnSecondSocialMediaOpenNewTab() {
+        String originalUrl = webDriver.getCurrentUrl();
+        discord.click();
         webDriver.getWindowHandles().forEach(tab -> webDriver.switchTo().window(tab));
         String newUrl = webDriver.getCurrentUrl();
         return (!originalUrl.equals(newUrl));
