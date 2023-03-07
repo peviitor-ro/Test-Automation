@@ -6,8 +6,7 @@ import io.cucumber.java.en.Then;
 import ro.peviitor.pageobject.modules.FooterModule;
 import ro.peviitor.pageobject.pages.HomePage;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class HomePageSteps {
     private final HomePage homePage = new HomePage();
@@ -91,5 +90,40 @@ public class HomePageSteps {
     @And("the second link in second section is {string}")
     public void theSecondLinkInSecondSectionIs(String secondLink) {
         assertEquals(footerModule.confidentialityPolicyLink(), secondLink, "The second kink its not correct!");
+    }
+
+    @Then("the section is spelled as {string}")
+    public void theSectionIsSpelledAs(String text) {
+        assertEquals(footerModule.copyrightText(),text,"The spelling of copyright section its not correct!");
+    }
+
+    @And("on click nothing happens")
+    public void onClickNothingHappens() {
+        assertFalse(footerModule.doesClickingOnCopyrightOpenNewTab(),"Clicking on copyright section opens a new page.");
+    }
+
+    @Then("the first link underneath Social Media is {string}")
+    public void theFirstLinkUnderneathSocialMediaIs(String firstLink) {
+        assertEquals(footerModule.linkedInLInk(), firstLink,"The first link its not correct");
+    }
+
+    @And("on click first link from Social Media opens in a new tab")
+    public void onClickFirstLinkFromSocialMediaOpensInANewTab() {
+        assertTrue(footerModule.doesClickOnFirstSocialMediaOpenNewTab(),"The link does not open in a new tab");
+    }
+
+    @Then("the second link underneath Social Media is {string}")
+    public void theSecondLinkUnderneathSocialMediaIs(String secondLink) {
+        assertEquals(footerModule.discordText(),secondLink,"The link its not correct");
+    }
+
+    @And("on click second link from Social Media opens in a new tab")
+    public void onClickSecondLinkFromSocialMediaOpensInANewTab() {
+        assertTrue(footerModule.doesClickOnSecondSocialMediaOpenNewTab(),"The link does not open in a new tab");
+    }
+
+    @Then("the name is spelled as {string}")
+    public void theNameIsSpelledAs(String text) {
+        assertEquals(footerModule.socialMediaText(),text,"The text Social Media  is not spelled correctly");
     }
 }
