@@ -94,36 +94,66 @@ public class HomePageSteps {
 
     @Then("the section is spelled as {string}")
     public void theSectionIsSpelledAs(String text) {
-        assertEquals(footerModule.copyrightText(),text,"The spelling of copyright section its not correct!");
+        assertEquals(footerModule.copyrightText(), text, "The spelling of copyright section its not correct!");
     }
 
     @And("on click nothing happens")
     public void onClickNothingHappens() {
-        assertFalse(footerModule.doesClickingOnCopyrightOpenNewTab(),"Clicking on copyright section opens a new page.");
+        assertFalse(footerModule.doesClickingOnCopyrightOpenNewTab(), "Clicking on copyright section opens a new page.");
     }
 
     @Then("the first link underneath Social Media is {string}")
     public void theFirstLinkUnderneathSocialMediaIs(String firstLink) {
-        assertEquals(footerModule.linkedInLInk(), firstLink,"The first link its not correct");
+        assertEquals(footerModule.linkedInLInk(), firstLink, "The first link its not correct");
     }
 
     @And("on click first link from Social Media opens in a new tab")
     public void onClickFirstLinkFromSocialMediaOpensInANewTab() {
-        assertTrue(footerModule.doesClickOnFirstSocialMediaOpenNewTab(),"The link does not open in a new tab");
+        assertTrue(footerModule.doesClickOnFirstSocialMediaOpenNewTab(), "The link does not open in a new tab");
     }
 
     @Then("the second link underneath Social Media is {string}")
     public void theSecondLinkUnderneathSocialMediaIs(String secondLink) {
-        assertEquals(footerModule.discordText(),secondLink,"The link its not correct");
+        assertEquals(footerModule.discordText(), secondLink, "The link its not correct");
     }
 
     @And("on click second link from Social Media opens in a new tab")
     public void onClickSecondLinkFromSocialMediaOpensInANewTab() {
-        assertTrue(footerModule.doesClickOnSecondSocialMediaOpenNewTab(),"The link does not open in a new tab");
+        assertTrue(footerModule.doesClickOnSecondSocialMediaOpenNewTab(), "The link does not open in a new tab");
     }
 
     @Then("the name is spelled as {string}")
     public void theNameIsSpelledAs(String text) {
-        assertEquals(footerModule.socialMediaText(),text,"The text Social Media  is not spelled correctly");
+        assertEquals(footerModule.socialMediaText(), text, "The text Social Media  is not spelled correctly");
+    }
+
+    @Then("phrase is spelled as {string}")
+    public void phraseIsSpelledAs(String text) {
+        assertEquals(homePage.firstLineBlueSectionText(), text, "The phrase is not spelled correctly");
+    }
+
+    @Then("the first text in blue section is spelled as {string}")
+    public void theSecondLineInBlueSectionIsSpelledAs(String text) {
+        assertEquals(homePage.secondLineInBlueSectionText(), text, "The phrase is not spelled correctly");
+    }
+
+    @Then("the third line text is {string}")
+    public void theThirdLineTextIs(String text) {
+        assertEquals(homePage.theThirdLineText(), text, "The phrase is not spelled correctly");
+    }
+
+    @And("the third line link text is {string}")
+    public void theThirdLineLinkTextIs(String linkText) {
+        assertEquals(homePage.theThirdLineLink(), linkText, "The link is not correct!");
+    }
+
+    @And("on click the link from blue section opens a new tab")
+    public void onClickTheLinkFromBlueSectionOpensANewTab() {
+        assertTrue(homePage.doesTheThirdLinkOpenNewTab(), "The link does not open in a new tab");
+    }
+
+    @And("the background color of Blue section is {string}")
+    public void theBackgroundColorOfBlueSectionIs(String color) {
+        assertEquals(homePage.blueSectionBackgroundColour(),color,"The color of the background is not correct");
     }
 }
