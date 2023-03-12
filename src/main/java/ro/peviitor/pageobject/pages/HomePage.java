@@ -16,7 +16,12 @@ public class HomePage extends BasePage {
     protected WebElement joinAndHelpOut;
     @FindBy(xpath = "//a[@class='btn-yellow btn' and contains(@href,'voluntari')]")
     protected WebElement joinUs;
-
+    @FindBy(xpath = "//section[@class='title']/h1")
+    protected WebElement findWantedJobNow;
+    @FindBy(xpath = "//section[@class='title']/h1/span")
+    protected WebElement wantedJob;
+    @FindBy(xpath = "//section[@class='title'] /p[@class='description']")
+    protected WebElement secondLineWantedJob;
 
     public void open() {
         webDriver.get(TypesOfData.HOMEPAGE);
@@ -42,9 +47,16 @@ public class HomePage extends BasePage {
         return joinUs.getAttribute("href");
     }
 
-    public String blueSectionBackgroundColour(){
-        return blueSection.getCssValue("background-color");
+    public String findWantedJobNowText(){ return findWantedJobNow.getText();}
+
+    public String wantedJobColor(){ return wantedJob.getCssValue("color");}
+
+    public String blueSectionBackgroundColour() {return blueSection.getCssValue("background-color");
     }
+
+    public String  secondLineWantedJobText() { return secondLineWantedJob.getText();
+    }
+
     public boolean doesTheThirdLinkOpenNewTab() {
         String originalUrl = webDriver.getCurrentUrl();
         joinUs.click();
@@ -52,6 +64,5 @@ public class HomePage extends BasePage {
         String newUrl = webDriver.getCurrentUrl();
         return (!originalUrl.equals(newUrl));
     }
-
 
 }

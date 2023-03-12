@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import ro.peviitor.pageobject.modules.FooterModule;
+import ro.peviitor.pageobject.modules.HeaderModule;
 import ro.peviitor.pageobject.pages.HomePage;
 
 import static org.testng.Assert.*;
@@ -11,6 +12,8 @@ import static org.testng.Assert.*;
 public class HomePageSteps {
     private final HomePage homePage = new HomePage();
     private final FooterModule footerModule = new FooterModule();
+
+    private final HeaderModule headerModule = new HeaderModule();
 
     @Given("User is on the homepage")
     public void userHasHomepageOpen() {
@@ -154,6 +157,61 @@ public class HomePageSteps {
 
     @And("the background color of Blue section is {string}")
     public void theBackgroundColorOfBlueSectionIs(String color) {
-        assertEquals(homePage.blueSectionBackgroundColour(),color,"The color of the background is not correct");
+        assertEquals(homePage.blueSectionBackgroundColour(), color, "The color of the background is not correct");
+    }
+
+    @Then("the content of wanted job section is spelled as {string}")
+    public void theContentOfWantedJobIsSpelledAs(String text) {
+        assertEquals(homePage.findWantedJobNowText(), text, "The text displayed it is not correct ");
+    }
+
+    @And("The color for jobul dorit from the Gaseste-ti jobul dorit acum is {string}")
+    public void theColorForJobulDoritFromTheGasesteTiJobulDoritAcumIs(String color) {
+        assertEquals(homePage.wantedJobColor(), color, "The color of the text is not correct");
+    }
+
+    @Then("the second line from this section is spelled as {string}")
+    public void theSecondLineFromThisSectionIsSpelledAs(String text) {
+        assertTrue(homePage.secondLineWantedJobText().contains(text), "The displayed text it is not correct");
+    }
+
+    @Then("Briefcase logo visible")
+    public void briefcaseLogoVisible() {
+        assertTrue(headerModule.isBriefcaseLogoVisible(), "The briefcase logo is not displayed");
+    }
+
+    @Then("Alătură-te text displayed")
+    public void alăturăTeTextDisplayed() {
+        assertTrue(headerModule.isJoinUsVisible(), "The Alătură-te is not displayed");
+    }
+
+    @And("the link of Alătură-te is {string}")
+    public void theLinkOfAlăturăTeIs(String link) {
+        assertEquals(headerModule.joinUsLink(), link, "The redirect link it is not correct");
+    }
+
+    @And("clicking on Alătură-te opens a new tab")
+    public void clickingOnAlăturăTeOpensANewTab() {
+        assertTrue(headerModule.doesJoinUsLinkOpenInANewTab(), "The link does not open in a new tab");
+    }
+
+    @Then("Spelling of the word  is {string}")
+    public void spellingOfTheRightHeaderWordText(String text) {
+        assertEquals(headerModule.joinUsText(), text, "The Alătură-te it is not spelled correctly");
+    }
+
+    @Then("logo is visible")
+    public void logoIsVisible() {
+        assertTrue(headerModule.isLogoVisible(), "The logo is not displayed in the header");
+    }
+
+    @And("click on logo nothing happens")
+    public void clickOnLogoNothingHappens() {
+        assertFalse(headerModule.doesClickingOnLogoOpenNewTab(), "Clicking on logo opens a new page.");
+    }
+
+    @And("logo is displayed in left corner of the header at {string}")
+    public void logoIsDisplayedInLeftCornerOfTheHeaderAt(String position) {
+        assertEquals(headerModule.headerLogoPosition(), position, "The position of logo is not correct");
     }
 }
