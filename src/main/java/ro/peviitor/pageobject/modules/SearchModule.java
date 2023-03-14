@@ -5,9 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import ro.peviitor.pageobject.BasePage;
 
-import java.util.List;
-
-import static java.lang.Thread.sleep;
+import static org.openqa.selenium.Keys.ENTER;
 
 public class SearchModule extends BasePage {
 
@@ -23,15 +21,12 @@ public class SearchModule extends BasePage {
     protected WebElement defaultValue;
     @FindBy(xpath = "//select[@id='country']")
     protected WebElement element;
-    @FindBy(xpath = "//select[@id='country']/option[@value='România']")
-    protected WebElement firstSelectOption;
-    @FindBy(xpath = "//select[@id='country']/option[@value='România']")
-    protected WebElement secondSelectOption;
 
     private Select locationSelect() {
-        Select select = new Select(element);
-        return select;
+        return new Select(element);
     }
+
+    public Integer getSelectSize(){ return locationSelect().getOptions().size();}
 
     public String selectFirstOption() {
         return locationSelect().getFirstSelectedOption().getText();
@@ -90,6 +85,13 @@ public class SearchModule extends BasePage {
     public boolean doesClickingOnSearchButtonReturnsResults() {
         String originalUrl = webDriver.getCurrentUrl();
         search.click();
+        String newUrl = webDriver.getCurrentUrl();
+        return (!originalUrl.equals(newUrl));
+    }
+
+    public boolean doesPressingEnterReturnsResults() {
+        String originalUrl = webDriver.getCurrentUrl();
+        search.sendKeys(ENTER);
         String newUrl = webDriver.getCurrentUrl();
         return (!originalUrl.equals(newUrl));
     }

@@ -11,6 +11,7 @@ Feature: Search bars section
     Then the spelling of the text inside first search bar is "Ce doriți să lucrați?"
     And user can type any job in the search bar like "Engineer"
     And user can search by company name like "Epam"
+    When user press ENTER after filling desired search parameters returns result
 
   @SearchBars @SecondSearch
   Scenario: Second search criteria behaviour and functionality

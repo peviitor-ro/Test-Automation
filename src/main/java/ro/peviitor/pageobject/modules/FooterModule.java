@@ -26,7 +26,6 @@ public class FooterModule extends BasePage {
     @FindBy(xpath = "//section[@class='social-media'] //a[contains(@href,'discord')]")
     protected WebElement discord;
 
-
     public String organizationText() {
         return organization.getText();
     }
@@ -81,46 +80,33 @@ public class FooterModule extends BasePage {
 
     public String discordText() {
         return discord.getAttribute("href");
-
     }
 
     public boolean doesAboutUsLinkOpenInANewTab() {
-        String originalUrl = webDriver.getCurrentUrl();
-        aboutUs.click();
-        webDriver.getWindowHandles().forEach(tab -> webDriver.switchTo().window(tab));
-        String newUrl = webDriver.getCurrentUrl();
-        return (!originalUrl.equals(newUrl));
+       return isResultsShownInNewTabClickingOn(aboutUs);
     }
 
     public boolean doesJoinUsLinkOpenInANewTab() {
-        String originalUrl = webDriver.getCurrentUrl();
-        joinUs.click();
-        webDriver.getWindowHandles().forEach(tab -> webDriver.switchTo().window(tab));
-        String newUrl = webDriver.getCurrentUrl();
-        return (!originalUrl.equals(newUrl));
+       return isResultsShownInNewTabClickingOn(joinUs);
     }
 
     public boolean doesClickingOnCopyrightOpenNewTab() {
-        String originalUrl = webDriver.getCurrentUrl();
-        copyright.click();
-        webDriver.getWindowHandles().forEach(tab -> webDriver.switchTo().window(tab));
-        String newUrl = webDriver.getCurrentUrl();
-        return (!originalUrl.equals(newUrl));
+      return isResultsShownInNewTabClickingOn(copyright);
     }
 
     public boolean doesClickOnFirstSocialMediaOpenNewTab() {
+      return isResultsShownInNewTabClickingOn(linkedIn);
+    }
+
+    public boolean doesClickOnSecondSocialMediaOpenNewTab() {
+        return isResultsShownInNewTabClickingOn(discord);
+    }
+    private boolean isResultsShownInNewTabClickingOn(WebElement element) {
         String originalUrl = webDriver.getCurrentUrl();
-        linkedIn.click();
+        element.click();
         webDriver.getWindowHandles().forEach(tab -> webDriver.switchTo().window(tab));
         String newUrl = webDriver.getCurrentUrl();
         return (!originalUrl.equals(newUrl));
     }
 
-    public boolean doesClickOnSecondSocialMediaOpenNewTab() {
-        String originalUrl = webDriver.getCurrentUrl();
-        discord.click();
-        webDriver.getWindowHandles().forEach(tab -> webDriver.switchTo().window(tab));
-        String newUrl = webDriver.getCurrentUrl();
-        return (!originalUrl.equals(newUrl));
-    }
 }

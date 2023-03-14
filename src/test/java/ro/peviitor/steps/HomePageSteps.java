@@ -3,6 +3,7 @@ package ro.peviitor.steps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import ro.peviitor.pageobject.modules.FooterModule;
 import ro.peviitor.pageobject.modules.HeaderModule;
 import ro.peviitor.pageobject.modules.SearchModule;
@@ -258,6 +259,11 @@ public class HomePageSteps {
         assertEquals(searchModule.getTextInputtedInSearchField(), company, "The company inputted in search text field returned nothing ");
     }
 
+    @When("user press ENTER after filling desired search parameters returns result")
+    public void userPressENTERAfterFillingDesiredSearchParametersReturnsResult() {
+        assertTrue(searchModule.doesPressingEnterReturnsResults(),"Pressing ENTER do not return eny results");
+    }
+
     @Then("a location icon is visible")
     public void aLocationIconIsVisible() {
         assertTrue(searchModule.isLocationIconVisible(),"The location icon is not displayed");
@@ -275,7 +281,7 @@ public class HomePageSteps {
 
     @And("clicking on the text from second search a dropdown appear")
     public void clickingOnTheTextFromSecondSearchADropdownAppear() {
-
+        assertTrue(searchModule.getSelectSize()>1);
     }
 
     @Then("you can select first option from dropdown {string}")
@@ -287,5 +293,4 @@ public class HomePageSteps {
     public void youCanSelectSecondOptionFromDropdown(String secondOption) {
         assertEquals(searchModule.selectSecondOption(),secondOption,"The user cannot select option Toate");
     }
-
 }
