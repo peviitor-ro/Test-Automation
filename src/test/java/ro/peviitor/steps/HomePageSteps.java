@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import ro.peviitor.pageobject.modules.FooterModule;
 import ro.peviitor.pageobject.modules.HeaderModule;
+import ro.peviitor.pageobject.modules.SearchModule;
 import ro.peviitor.pageobject.pages.HomePage;
 
 import static org.testng.Assert.*;
@@ -12,8 +13,8 @@ import static org.testng.Assert.*;
 public class HomePageSteps {
     private final HomePage homePage = new HomePage();
     private final FooterModule footerModule = new FooterModule();
-
     private final HeaderModule headerModule = new HeaderModule();
+    private final SearchModule searchModule = new SearchModule();
 
     @Given("User is on the homepage")
     public void userHasHomepageOpen() {
@@ -214,4 +215,77 @@ public class HomePageSteps {
     public void logoIsDisplayedInLeftCornerOfTheHeaderAt(String position) {
         assertEquals(headerModule.headerLogoPosition(), position, "The position of logo is not correct");
     }
+
+    @Then("the button Caută is spelled as {string}")
+    public void theButtonCautăIsSpelledAs(String text) {
+        assertEquals(searchModule.searchText(), text, "The Caută is not spelled correctly");
+    }
+
+    @Given("the button Caută is displayed")
+    public void theButtonCautăIsDisplayed() {
+        assertTrue(searchModule.isSearchVisible(), "The search button in not visible");
+    }
+
+    @Then("a magnifying glass is visible")
+    public void aMagnifyingGlassIsVisible() {
+        assertTrue(searchModule.isMagnifyingGlassVisible(),"The magnifying glass is not displayed");
+    }
+
+    @And("click on magnifying glass nothing happens")
+    public void clickOnMagnifyingGlassNothingHappens() {
+        assertFalse(searchModule.doesClickingOnMagnifyingGlassOpenNewTab(),"Clicking on magnifying glass open a new tab");
+    }
+
+    @Then("the spelling of the text inside first search bar is {string}")
+    public void theSpellingOfTheTextInsideFirstSearchBarIs(String placeholder) {
+        assertEquals(searchModule.getSearchPlaceholderText(),placeholder , "The message displayed inside search field is not correct");
+    }
+
+    @And("Caută can be clicked and returned results without search parameter")
+    public void cautăCanBeClickedAndReturnedResultsWithoutSearchParameter() {
+       assertTrue(searchModule.doesClickingOnSearchButtonReturnsResults(),"Clicking on search do not return eny results");
+    }
+
+    @And("user can type any job in the search bar like {string}")
+    public void userCanTypeAnyJobInTheSearchBarLike(String job) {
+        searchModule.sendTextInSearchField(job);
+        assertEquals(searchModule.getTextInputtedInSearchField(), job, "The job inputted in search text field returned nothing ");
+    }
+
+    @And("user can search by company name like {string}")
+    public void userCanSearchByCompanyNameLike(String company) {
+        searchModule.sendTextInSearchField(company);
+        assertEquals(searchModule.getTextInputtedInSearchField(), company, "The company inputted in search text field returned nothing ");
+    }
+
+    @Then("a location icon is visible")
+    public void aLocationIconIsVisible() {
+        assertTrue(searchModule.isLocationIconVisible(),"The location icon is not displayed");
+    }
+
+    @Then("the text inside second search criteria is by default România")
+    public void theTextInsideSecondSearchCriteriaIsByDefaultRomânia() {
+        assertTrue(searchModule.isDefaultValueVisible(),"The default value(România) is not displayed");
+    }
+
+    @And("the spelling of the text is {string}")
+    public void theSpellingOfTheTextIs(String text) {
+        assertEquals(searchModule.getDefaultValueText(), text ,"The default value(România) is not spelled correctly");
+    }
+
+    @And("clicking on the text from second search a dropdown appear")
+    public void clickingOnTheTextFromSecondSearchADropdownAppear() {
+
+    }
+
+    @Then("you can select first option from dropdown {string}")
+    public void youCanSelectFirstOptionFromDropdown(String firstOption){
+        assertEquals(searchModule.selectFirstOption(),firstOption,"The user cannot select option România");
+    }
+
+    @Then("you can select second option from dropdown {string}")
+    public void youCanSelectSecondOptionFromDropdown(String secondOption) {
+        assertEquals(searchModule.selectSecondOption(),secondOption,"The user cannot select option Toate");
+    }
+
 }

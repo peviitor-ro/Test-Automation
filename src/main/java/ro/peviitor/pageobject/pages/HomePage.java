@@ -54,8 +54,7 @@ public class HomePage extends BasePage {
     public String blueSectionBackgroundColour() {return blueSection.getCssValue("background-color");
     }
 
-    public String  secondLineWantedJobText() { return secondLineWantedJob.getText();
-    }
+    public String  secondLineWantedJobText() { return secondLineWantedJob.getText();}
 
     public boolean doesTheThirdLinkOpenNewTab() {
         String originalUrl = webDriver.getCurrentUrl();
