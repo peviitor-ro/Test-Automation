@@ -2,7 +2,11 @@ package ro.peviitor.pageobject.modules;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ro.peviitor.pageobject.BasePage;
+
+import java.time.Duration;
 
 public class FooterModule extends BasePage {
     @FindBy(xpath = "//section[@class='company']/h3")
@@ -103,6 +107,7 @@ public class FooterModule extends BasePage {
     }
     private boolean isResultsShownInNewTabClickingOn(WebElement element) {
         String originalUrl = webDriver.getCurrentUrl();
+        new WebDriverWait(webDriver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(element));
         element.click();
         webDriver.getWindowHandles().forEach(tab -> webDriver.switchTo().window(tab));
         String newUrl = webDriver.getCurrentUrl();

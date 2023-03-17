@@ -2,7 +2,11 @@ package ro.peviitor.pageobject.modules;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ro.peviitor.pageobject.BasePage;
+
+import java.time.Duration;
 
 public class HeaderModule extends BasePage {
 
@@ -10,10 +14,11 @@ public class HeaderModule extends BasePage {
     protected WebElement briefcaseLogo;
     @FindBy(xpath = "//section[contains(@class ,'topbar')]/a[@href='https://www.oportunitatisicariere.ro/voluntari']")
     protected WebElement joinUs;
-    @FindBy(xpath = "//img[@alt='pe viitor logo']")
+    @FindBy(xpath = "//a/img[@alt='pe viitor logo']")
     protected WebElement logo;
 
     public boolean isBriefcaseLogoVisible() {
+        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(briefcaseLogo));
         return briefcaseLogo.isDisplayed();
     }
 
@@ -30,6 +35,7 @@ public class HeaderModule extends BasePage {
     }
 
     public boolean isLogoVisible() {
+        new WebDriverWait(webDriver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(logo));
         return logo.isDisplayed();
     }
 
@@ -45,8 +51,14 @@ public class HeaderModule extends BasePage {
         return isResultsShownInNewTabClickingOn(logo);
     }
 
+    public String getPageAfterClickingLogo(){
+        logo.click();
+        return  webDriver.getCurrentUrl();
+    }
+
     private boolean isResultsShownInNewTabClickingOn(WebElement element) {
         String originalUrl = webDriver.getCurrentUrl();
+        new WebDriverWait(webDriver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(element));
         element.click();
         webDriver.getWindowHandles().forEach(tab -> webDriver.switchTo().window(tab));
         String newUrl = webDriver.getCurrentUrl();
