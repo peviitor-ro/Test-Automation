@@ -51,8 +51,7 @@ public class HomePage extends BasePage {
 
     public String wantedJobColor(){ return wantedJob.getCssValue("color");}
 
-    public String blueSectionBackgroundColour() {return blueSection.getCssValue("background-color");
-    }
+    public String blueSectionBackgroundColour() {return blueSection.getCssValue("background-color");}
 
     public String  secondLineWantedJobText() { return secondLineWantedJob.getText();}
 

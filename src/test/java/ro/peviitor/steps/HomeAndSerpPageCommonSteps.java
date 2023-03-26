@@ -239,4 +239,5 @@ public class HomeAndSerpPageCommonSteps {
     public void youCanSelectSecondOptionFromDropdown(String secondOption) {
         assertEquals(searchModule.selectSecondOption(), secondOption, "The user cannot select option Toate");
     }
+
 }
