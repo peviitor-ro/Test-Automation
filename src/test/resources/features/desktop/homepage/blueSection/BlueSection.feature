@@ -11,7 +11,7 @@ Feature: Blue Section and the link underneath
 
   @BlueSection
   Scenario: Alătură-te cauzei noastre si devino un contribuitor spelling(2nd line in blue Section)
-    Then the first text in blue section is spelled as "Alătură-te cauzei noastre si devino un contribuitor."
+    Then the first text in blue section is spelled as "Alătură-te cauzei noastre și devino un contribuitor."
 
   @BlueSection
   Scenario: Alătură-te cauzei noastre spelling and redirect(3rd line in blue section)
