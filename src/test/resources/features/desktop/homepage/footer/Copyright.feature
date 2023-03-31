@@ -5,5 +5,5 @@ Feature: Copyright footer section content
     Given User is on the homepage
     @Copyright
     Scenario: Spelling of the copyright footer
-      Then the section is spelled as "© 2022 - Toate drepturile rezervate PE VIITOR."
+      Then the section is spelled as "© 2023 - Toate drepturile rezervate PE VIITOR."
       And on click nothing happens

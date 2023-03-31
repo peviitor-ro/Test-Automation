@@ -26,11 +26,14 @@ public class SearchModule extends BasePage {
     @FindBy(xpath = "//select[@id='country']")
     protected WebElement countrySelect;
 
+
     private Select locationSelect() {
         return new Select(countrySelect);
     }
 
-    public Integer getSelectSize(){ return locationSelect().getOptions().size();}
+    public Integer getSelectSize() {
+        return locationSelect().getOptions().size();
+    }
 
     public String selectFirstOption() {
         return locationSelect().getFirstSelectedOption().getText();
@@ -50,7 +53,7 @@ public class SearchModule extends BasePage {
     }
 
     public boolean isMagnifyingGlassVisible() {
-        new WebDriverWait(webDriver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(magnifyingGlass));
+        new WebDriverWait(webDriver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(magnifyingGlass));
         return magnifyingGlass.isDisplayed();
     }
 
@@ -104,4 +107,12 @@ public class SearchModule extends BasePage {
         return (!originalUrl.equals(newUrl));
     }
 
+    public String sendSearchParameter(String inputDesiredSearchParameter) {
+        inputSearchField.sendKeys(inputDesiredSearchParameter);
+        return inputSearchField.getAttribute("value");
+    }
+
+    public void clickOnSearchButton() {
+        search.click();
+    }
 }
