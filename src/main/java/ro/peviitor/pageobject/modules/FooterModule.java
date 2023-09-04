@@ -75,6 +75,7 @@ public class FooterModule extends BasePage {
     }
 
     public String socialMediaText() {
+        socialMedia.isDisplayed();
         return socialMedia.getText();
     }
 

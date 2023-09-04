@@ -14,8 +14,9 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven.surefire.version>2.22.2</maven.surefire.version>
         <selenium.version>4.7.1</selenium.version>
+        <selenium.http.version>4.8.1</selenium.http.version>
         <testng.version>7.7.0</testng.version>
-        <webdrivermanager.version>5.3.1</webdrivermanager.version>
+        <webdrivermanager.version>5.4.1</webdrivermanager.version>
         <cucumber.version>7.8.0</cucumber.version>
     </properties>
 
@@ -37,6 +38,11 @@
             <version>${webdrivermanager.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-http-jdk-client</artifactId>
+            <version>${selenium.http.version}</version>
+        </dependency>
+              <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>

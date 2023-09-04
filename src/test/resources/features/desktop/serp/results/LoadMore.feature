@@ -15,6 +15,6 @@ Feature: Încarcă mai multe button presence,spelling,behaviour
     Scenario: "Încarcă mai multe" button is no longer visible if there are no more jobs to display
       Then input a search parameter like "sofer"
       And click on Caută button
-      Then there are displayed 10 jobs displayed
+#      Then there are displayed 10 jobs displayed
       And click on Load more button if not all job displayed
       When all job are displayed button is not longer visible

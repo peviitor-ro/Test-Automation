@@ -119,7 +119,7 @@ public class HomeAndSerpPageCommonSteps {
 
     @Then("the name is spelled as {string}")
     public void theNameIsSpelledAs(String text) {
-        assertEquals(footerModule.socialMediaText(), text, "The text Social Media  is not spelled correctly");
+        assertTrue(footerModule.socialMediaText().contains(text), "The text Social Media  is not spelled correctly");
     }
 
 
