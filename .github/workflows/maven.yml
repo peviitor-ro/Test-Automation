@@ -1,0 +1,53 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Java CI with Maven reloaded
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# env:
+#   MAVEN_OPTS: "-Dmaven.repo.local=$MAVEN_USER_HOME/repository"
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Step 1 - Checkout code
+      uses: actions/checkout@v3
+
+    - name: Step 2 - Set up Java
+      uses: actions/setup-java@v3
+      with:
+       distribution: 'zulu'
+       java-version: '11'
+        
+    - name: Step 3 - Build with Maven
+      run: |
+       mvn -B package --file pom.xml
+       mkdir staging && cp target/*.jar staging
+       
+    - name: Step 4 - Set up a cache for Maven
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2  
+
+    - name: Step 5 - Run TestNG tests
+      run: mvn clean test 
+      
+    - name: Step 6 - Use the Upload Artifact GitHub Action
+      uses: actions/upload-artifact@v3.1.2
+      with: 
+        name: assets-for-download
+        path: staging
